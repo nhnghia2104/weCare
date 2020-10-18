@@ -66,10 +66,8 @@ function validateEmail(email) {
 $(document).ready(function(){
   $(".signup-button").click(function(){
     const email = $(".signup-input").val();
-  // $result.text("");
   console.log("fuck")
   if (validateEmail(email)) {
-    alert("valid email! ngonnnnnnnn");
     $('.input-warning').html('');
     $('.signup-input').css("border-color","0.1rem solid rgb(221, 221, 221);");
   } else {
