@@ -20,11 +20,12 @@ class Shop extends CI_Controller {
 	 */
 	public function index()
 	{
+		$category = (isset($_GET['src'])) ? $_GET['src'] : '' ;
+
 		$this->load->model('Product_model');
-		$data = $this->Product_model->getProductActive();
+
+		$data = $category == '' ? $this->Product_model->getProductActive() : $this->Product_model->getProductActiveWithCategory($category);
 		$data = array('product' => $data);
-		// echo "<pre>";
-		// var_dump($data);
 		$this->load->view('shop_view',$data, FALSE);
 	}
 
@@ -51,6 +52,13 @@ class Shop extends CI_Controller {
 		$time = date('Y-m-d H:i:s');
 		$this->load->model('Product_Traffic_model');
 		$this->Product_Traffic_model->insert($id,$time);
+	}
+
+	public function addToCartValue()
+	{
+		$id = $_POST['id'];
+		$this->load->model('Product_model');
+		$this->Product_model->increaseAddToCartValue($id);
 	}
 }
  

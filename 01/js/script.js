@@ -1,27 +1,38 @@
 var isOpenCart = false;
+
 function openNav() {
     document.getElementById("miniCart").style.right = "0px";
     // document.getElementById("navi-top").style.top = "-80px";
     document.getElementById("fadeBackground").style.opacity = "1";
-    $('#fadeBackground').css('z-index','30');
+    $('#fadeBackground').css('z-index', '30');
     $('body').addClass('disableScroll');
     isOpenCart = true;
-  }
-  
-  function closeNav() {
+}
+
+function closeNav() {
     document.getElementById("miniCart").style.right = "-500px";
     // document.getElementById("navi-top").style.top = "0px";
     document.getElementById("fadeBackground").style.opacity = "0";
-    $('#fadeBackground').css('z-index','-1');
+    $('#fadeBackground').css('z-index', '-1');
     $('body').removeClass('disableScroll');
     isOpenCart = false;
-  }
-  function goBack() {
+}
+
+function goBack() {
     window.history.back();
-  }
+}
 
+function fadeBackground() {
+    document.getElementById("fadeBackground").style.opacity = "1";
+    $('#fadeBackground').css('z-index', '30');
+}
 
-  $(document).ready(function() {
+function hideBackground() {
+    document.getElementById("fadeBackground").style.opacity = "0";
+    $('#fadeBackground').css('z-index', '-1');
+}
+
+$(document).ready(function() {
     $("#fadeBackground").click(function() {
         closeNav();
     });
@@ -54,16 +65,20 @@ $(document).ready(function() {
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
     var currentScrollPos = window.pageYOffset;
+
     if (prevScrollpos > currentScrollPos) { // is csroll up
-        if (isOpenCart == false) { //   Hide navibar when scroll
-            document.getElementById("navi-top").style.top = "0px";
-        }
         if (prevScrollpos <= 100) {
-            document.getElementById("navi-top").style.backgroundColor = "rgba(17, 17, 17, 0.0)";
+            document.getElementById("navi-top").style.backgroundColor = "rgba(0,48,73, 0.0)";
+            $('.navbar_logo').attr('src', $('.navbar_logo').data('light'));
+            $('#navi-top').removeClass('navbar-dark');
+            $('#navi-top').addClass('navbar-light');
         }
     } else { // scroll down
         if (prevScrollpos > 100) {
-            document.getElementById("navi-top").style.backgroundColor = "rgba(17, 17, 17, 1)";
+            document.getElementById("navi-top").style.backgroundColor = "rgba(0,48,73, 0.9)";
+            $('.navbar_logo').attr('src', $('.navbar_logo').data('dark'));
+            $('#navi-top').addClass('navbar-dark');
+            $('#navi-top').removeClass('navbar-light');
         }
         // document.getElementById("navi-top").style.top = "-80px";
     }

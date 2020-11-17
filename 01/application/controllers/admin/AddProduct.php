@@ -85,14 +85,27 @@ class AddProduct extends CI_Controller {
 
 		$image = base_url().$target_file;
 
+		$status = $this->input->post('product-status');
+
+		$discount = $this->input->post('product-discount');
+
+		$style = $this->input->post('product-style');
+
+		$inventory = $this->input->post('product-inventory');
+
+		$detail = $this->input->post('product-detail');
+
+		$idAdmin = $this->input->post('product-idAdmin');
+
 		if ($name == '' || $category == 0 || $price == '' || $uploadOk == 0) {
 			//  Fail
 		}
 		else {
 			$this->load->model('Product_model');
 
-			if ($this->Product_model->insertProduct($id, $name, $category ,$description, $price, $image) > 0) {
-				$this->load->view('admin/addSuccess_View');
+			if ($this->Product_model->insertProduct($id, $name, $category ,$description, $price, $image,$status,$discount,$style,$inventory, $detail, $idAdmin) > 0) {
+				// $this->load->view('admin/addSuccess_View');
+				echo "ngon";
 			}
 		}
 

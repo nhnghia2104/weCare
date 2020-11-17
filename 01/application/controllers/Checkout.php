@@ -20,11 +20,9 @@ class Checkout extends CI_Controller {
 	 */
 	public function index()
 	{
-		// header('Location: http://localhost:8080/01/index.php/admin/Product/');
+		// header('Location: http://localhost:2104/01/index.php/admin/Product/');
 		$this->load->view('checkout_view');
-		// $data = $_POST['json'];
-		// $decoded = json_decode($data, true);
-		// var_dump($decoded);
+		// $this->load->view('checkout_success_view');
 	}
 
 	public function complete() {
@@ -58,6 +56,7 @@ class Checkout extends CI_Controller {
 		}
 
 		foreach ($data['productList'] as $key => $value) {
+			
 			$idDetail = uniqid();
 			$idOrder = $idOrder;
 			$idProduct = $value['id'];
@@ -65,20 +64,42 @@ class Checkout extends CI_Controller {
 			$price = $value['price'];
 			$discount = $value['discount'];
 			$totalSalePrice = $price * $amount * ( 1 - $discount);
-			$this->load->model('Orders_model');
-			if ($this->Orders_model->insertOrdersDetail($idDetail, $idOrder, $idProduct, $amount,$price,$discount,$totalSalePrice) > 0) {}
-			else {
+
+			$this->load->model('Product_model');
+			$stock = $this->Product_model->checkStock($idProduct);
+			if ($stock[0]['inventory'] < $amount) {
+				$send = array(	'status' => 'error',
+								'id' => $idProduct,
+								'alert' => 'Sorry, ' .$stock[0]['DisplayName'].' is currently out of stock');
+				$send = json_encode($send);
+				echo $send;
+				$this->load->model('Orders_model');
+				$this->Orders_model->removeOrder($idOrder);
 				$complete = 0;
+				break;
+			}
+			else {
+				$this->load->model('Orders_model');
+				if ($this->Orders_model->insertOrdersDetail($idDetail, $idOrder, $idProduct, $amount,$price,$discount,$totalSalePrice) > 0) {
+					$complete = 1;
+				}
+				else {
+					$complete = 0;
+					break;
+				}
 			}
 		}
 
 		if ($complete == 1) {
-			echo "ngon";
+			$send = array('status' => 'complete','id' => $idOrder);
+			$send = json_encode($send);
+			echo $send;
 		}
-		else {
-			echo "toang";
-		}
+	}
 
+	public function shipping()
+	{
+		$this->load->view('shipping_view');
 	}
 
 	

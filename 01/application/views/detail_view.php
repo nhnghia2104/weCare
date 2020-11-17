@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,9 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- --------------------------------------------------------------- -->
     <!-- font -->
     <!-- -------------------------------------------------------------- -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <!-- -------------------------------------------------------------------------------------------- -->
     <!-- Style -->
@@ -25,21 +23,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
-    <div class="custom-font-1">
+    <div class="custom-font-4">
         <!-- <div class="overlay"></div> -->
-        <nav class="navbar fixed-top navbar-expand-md topbar bg-dark navbar-dark" id="navi-top">
+        <nav class="navbar fixed-top navbar-expand-md topbar navbar-light shadow" id="navi-top">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-top"
-                    aria-controls="menu-top" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-top" aria-controls="menu-top" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <i class="fal fa-atom"></i>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/home">
+                    <img class="navbar_logo" data-light="<?php echo base_url(); ?>img/svg/logo-light.svg" data-dark="<?php echo base_url(); ?>img/svg/logo.svg" src="<?php echo base_url(); ?>img/svg/logo-light.svg" alt="logo" height="70px" color="white">
                 </a>
                 <div class="collapse navbar-collapse" id="menu-top">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menu-top-element">
-                        <li class="nav-item active">
-                            <a class="nav-link home-navbar-button" href="#">Elite's shop</a>
+                        <li class="nav-item active shop_category dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle home-navbar-button" href="<?php echo base_url(); ?>index.php/shop" id="navbarCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                            <div class="dropdown-menu need-hover-drop rounded-0 border-0 shadow" id="dropdownCategory" style="min-width: 300px;">
+                                <a class="dropdown-item custom-font-4" href="#">All Category</a>
+                                <a class="dropdown-item custom-font-4" href="#">A</a>
+                                <a class="dropdown-item custom-font-4" href="#">B</a>
+                            </div>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link  home-navbar-button" href="#">About us</a>
@@ -48,17 +50,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a class="nav-link  home-navbar-button" href="#">Contact us</a>
                         </li>
                     </ul>
-
                     <ul class="navbar-nav mt-2 mt-lg-0 menu-top-element">
-                        <li class="nav-item active">
-                            <a class="nav-link  home-navbar-button" href="signin">Sign in &nbsp<i
-                                    class="fal fa-user"></i></a>
+                        <li class="nav-item active signin_info dropdown no-arrow">
+                            <a class="nav-link btn-signin home-navbar-button" href="#signModal" data-toggle="modal">Sign in &nbsp<i class="fal fa-user"></i></a>
                         </li>
+
                         <li class="nav-item active">
                             <a class="nav-link  home-navbar-button" onclick="openNav()">
                                 Your cart &nbsp<i class="fal fa-shopping-cart"></i>
-                                <span
-                                    class="total-count badge badge-success badge-counter align-middle rounded-circle">0</span>
+                                <span style=" background-color: #f77f00;" class="total-count badge badge-success badge-counter align-middle rounded-circle">0</span>
                             </a>
                         </li>
                     </ul>
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <ul class="show-cart">
                 <!-- <li>
                     <div class="row justify-content-center align-items-center">
-                        <div class="col-3"><img id="img-0" class="lazy img-responsive card-img p-3" src="http://localhost:8080/01/FilesUpload/werner.webp"></div>
+                        <div class="col-3"><img id="img-0" class="lazy img-responsive card-img p-3" src="http://localhost:2104/01/FilesUpload/werner.webp"></div>
                         <div class="col-7">
                             <div class="name-content mb-2">Werner</div>
                             <div class="container-fluid price-content">
@@ -114,8 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <span class="total-cart align-middle">99*</span>
                     </div>
 
-                    <a href="<?php echo base_url(); ?>index.php/checkout" id="btn-checkout" type="button"
-                        class="col-12 btn btn-dark rounded-0" style="height:50px">Checkout</a>
+                    <a href="#" id="btn-checkout" type="button" class="col-12 btn btn-info rounded-0" style="height:50px">Checkout</a>
                 </div>
             </div>
         </div>
@@ -126,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="fadeBackground" class="fjXvoO"></div>
     <div style="height:70px"></div>
     <!-- policy -->
-    <div class="our-policy text-center align-middle pt-3 pb-3">
+    <!-- <div class="our-policy text-center align-middle pt-3 pb-3">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-4">
@@ -143,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- end policy -->
 
     <!-- main content -->
@@ -152,8 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container pt-5 pb-5">
             <div class="row">
                 <div class="col-md-6">
-                    <img class="d-block mt-auto mb-auto ml-auto mr-auto" src="<?php echo $dataProduct[0]['Image']; ?>"
-                        alt="">
+                    <img style="max-height:350px" class="d-block mt-auto mb-auto ml-auto mr-auto" src="<?php echo $dataProduct[0]['Image']; ?>" alt="">
                 </div>
                 <div class="col-md-6 pl-4 pr-4">
                     <section class="product-sale-content ">
@@ -177,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 echo "</h4>";
                                             } ?>
                                             <h4 class="custom-font-5 text-right text-uppercase">
-                                                &nbsp;$<?php echo $dataProduct[0]['Price'] * (1-$dataProduct[0]['discount']); ?>
+                                                &nbsp;$<?php echo $dataProduct[0]['Price'] * (1 - $dataProduct[0]['discount']); ?>
                                             </h4>
                                         </div>
                                     </div>
@@ -191,20 +189,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <!-- star -->
                         <div class="d-flex reviews">
-                            <p id="starReview" class="text-warning"></p>
-                            <a id="numReview" class="ml-1" href="#"></a>
+                            <p class="star-summary text-warning"></p>
+                            <a class="num-review ml-1" href="#"></a>
                         </div>
                         <!-- end star -->
 
                         <!-- button add to cart -->
-                        <button type="button"
-                            class="add-to-cart btn btn-dark rounded-0 text-uppercase w-100 justify-content-center align-items-center"
-                            data-id="<?php echo $dataProduct[0]['ID'] ?>"
-                            data-name="<?php echo $dataProduct[0]['Name'] ?>"
-                            data-price="<?php echo $dataProduct[0]['Price'] ?>"
-                            data-image="<?php echo $dataProduct[0]['Image'] ?>"
-                            data-discount="<?php echo $dataProduct[0]['discount'] ?>"
-                            style="height:50px">
+                        <button type="button" class="add-to-cart btn btn-info rounded-0 text-uppercase w-100 justify-content-center align-items-center" data-id="<?php echo $dataProduct[0]['ID'] ?>" data-name="<?php echo $dataProduct[0]['Name'] ?>" data-price="<?php echo $dataProduct[0]['Price'] ?>" data-image="<?php echo $dataProduct[0]['Image'] ?>" data-discount="<?php echo $dataProduct[0]['discount'] ?>" style="height:50px">
                             <i class="fal fa-shopping-cart"></i>
                             &nbsp;Add to cart
                         </button>
@@ -214,10 +205,286 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="reviews mt-4">
                             <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Free return</p>
                             <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Free ship for all</p>
+                            <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Two years warranty</p>
                         </div>
                     </section>
                 </div>
             </div>
+
+            <!-- Tabs -->
+            <section id="tabs">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <nav>
+                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">DETAILS</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">SHIPPING INFO</a>
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">PAYMENT OPTIONS</a>
+                                    <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">RETURNS &
+                                        EXCHANGES</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-6 pr-5">
+                                                <p class="custom-font-1">
+                                                    <?php echo $dataProduct[0]['Description'] ?>
+                                                </p>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <table class="detail-content table">
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <p class="custom-font-1 w-100">
+                                        Free Ship nha mọi người<br>
+                                    </p>
+                                </div>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                    <p class="custom-font-1">
+                                        ELite offers secure payment methods and you can choose to pay with Visa,
+                                        Mastercard, Maestro, American Express, Discover, Diners Club International,
+                                        Klarna, Apple Pay or PayPal.
+                                    </p>
+                                    <div class="text-center">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2ewe5eMPSEcIqwoU08QIOA/5d89569ef8dfe251d0b795f76e0163d1/visa-2x.png?ecom2=true&amp;width=40&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2ewe5eMPSEcIqwoU08QIOA/5d89569ef8dfe251d0b795f76e0163d1/visa-2x.png?ecom2=true&amp;width=80&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2ewe5eMPSEcIqwoU08QIOA/5d89569ef8dfe251d0b795f76e0163d1/visa-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2ewe5eMPSEcIqwoU08QIOA/5d89569ef8dfe251d0b795f76e0163d1/visa-2x.png?ecom2=true&amp;width=40&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2ewe5eMPSEcIqwoU08QIOA/5d89569ef8dfe251d0b795f76e0163d1/visa-2x.png?ecom2=true&amp;width=80&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2MIeYuELok46G2wAIU64Ao/dc9ffe7987f1c1654a722a3506199561/mastercard-2x.png?ecom2=true&amp;width=33&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2MIeYuELok46G2wAIU64Ao/dc9ffe7987f1c1654a722a3506199561/mastercard-2x.png?ecom2=true&amp;width=66&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2MIeYuELok46G2wAIU64Ao/dc9ffe7987f1c1654a722a3506199561/mastercard-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2MIeYuELok46G2wAIU64Ao/dc9ffe7987f1c1654a722a3506199561/mastercard-2x.png?ecom2=true&amp;width=33&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/2MIeYuELok46G2wAIU64Ao/dc9ffe7987f1c1654a722a3506199561/mastercard-2x.png?ecom2=true&amp;width=66&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/13q571kpXagKaugiUm8sqA/f292e71009a25c91f46b7a888e5cbccb/maestro-2x.png?ecom2=true&amp;width=32&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/13q571kpXagKaugiUm8sqA/f292e71009a25c91f46b7a888e5cbccb/maestro-2x.png?ecom2=true&amp;width=64&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/13q571kpXagKaugiUm8sqA/f292e71009a25c91f46b7a888e5cbccb/maestro-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/13q571kpXagKaugiUm8sqA/f292e71009a25c91f46b7a888e5cbccb/maestro-2x.png?ecom2=true&amp;width=32&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/13q571kpXagKaugiUm8sqA/f292e71009a25c91f46b7a888e5cbccb/maestro-2x.png?ecom2=true&amp;width=64&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7rjkl2vvIk46uK2ius6Uiy/bd47cf4a76b302d4a39b1176e853a712/amex-2x.png?ecom2=true&amp;width=27&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7rjkl2vvIk46uK2ius6Uiy/bd47cf4a76b302d4a39b1176e853a712/amex-2x.png?ecom2=true&amp;width=54&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7rjkl2vvIk46uK2ius6Uiy/bd47cf4a76b302d4a39b1176e853a712/amex-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7rjkl2vvIk46uK2ius6Uiy/bd47cf4a76b302d4a39b1176e853a712/amex-2x.png?ecom2=true&amp;width=27&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7rjkl2vvIk46uK2ius6Uiy/bd47cf4a76b302d4a39b1176e853a712/amex-2x.png?ecom2=true&amp;width=54&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3mlTXT3LWMyU8wKQaGm4YQ/26816edd4b522fb95031e74e2e80755d/discover-2x.png?ecom2=true&amp;width=53&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3mlTXT3LWMyU8wKQaGm4YQ/26816edd4b522fb95031e74e2e80755d/discover-2x.png?ecom2=true&amp;width=106&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3mlTXT3LWMyU8wKQaGm4YQ/26816edd4b522fb95031e74e2e80755d/discover-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3mlTXT3LWMyU8wKQaGm4YQ/26816edd4b522fb95031e74e2e80755d/discover-2x.png?ecom2=true&amp;width=53&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3mlTXT3LWMyU8wKQaGm4YQ/26816edd4b522fb95031e74e2e80755d/discover-2x.png?ecom2=true&amp;width=106&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3piI2aoGAUOiYQYc0KCw0Y/a9adef44c32c3efe97e34aebbb8feaa5/diners-club-2x.png?ecom2=true&amp;width=74&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3piI2aoGAUOiYQYc0KCw0Y/a9adef44c32c3efe97e34aebbb8feaa5/diners-club-2x.png?ecom2=true&amp;width=148&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3piI2aoGAUOiYQYc0KCw0Y/a9adef44c32c3efe97e34aebbb8feaa5/diners-club-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3piI2aoGAUOiYQYc0KCw0Y/a9adef44c32c3efe97e34aebbb8feaa5/diners-club-2x.png?ecom2=true&amp;width=74&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/3piI2aoGAUOiYQYc0KCw0Y/a9adef44c32c3efe97e34aebbb8feaa5/diners-club-2x.png?ecom2=true&amp;width=148&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/5UI0gSGTReIIQka4kWiKWQ/136ec5357618caf55b28efa2308ce298/klarna.png?ecom2=true&amp;width=67.5&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/5UI0gSGTReIIQka4kWiKWQ/136ec5357618caf55b28efa2308ce298/klarna.png?ecom2=true&amp;width=135&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/5UI0gSGTReIIQka4kWiKWQ/136ec5357618caf55b28efa2308ce298/klarna.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/5UI0gSGTReIIQka4kWiKWQ/136ec5357618caf55b28efa2308ce298/klarna.png?ecom2=true&amp;width=67.5&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/5UI0gSGTReIIQka4kWiKWQ/136ec5357618caf55b28efa2308ce298/klarna.png?ecom2=true&amp;width=135&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7lbcSVPXDa2caEYsEssYwQ/5a4d5223c5a306c96f86c9a81933e24b/apple-pay-2x.png?ecom2=true&amp;width=41&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7lbcSVPXDa2caEYsEssYwQ/5a4d5223c5a306c96f86c9a81933e24b/apple-pay-2x.png?ecom2=true&amp;width=82&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7lbcSVPXDa2caEYsEssYwQ/5a4d5223c5a306c96f86c9a81933e24b/apple-pay-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7lbcSVPXDa2caEYsEssYwQ/5a4d5223c5a306c96f86c9a81933e24b/apple-pay-2x.png?ecom2=true&amp;width=41&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/7lbcSVPXDa2caEYsEssYwQ/5a4d5223c5a306c96f86c9a81933e24b/apple-pay-2x.png?ecom2=true&amp;width=82&amp;quality=100 2x" class="m-2">
+                                        <img srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/4eXbeetlGwMke2MkY4Kkkw/1d422b9855aacdb179c7a42fd815cfa1/paypal-2x.png?ecom2=true&amp;width=64&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/4eXbeetlGwMke2MkY4Kkkw/1d422b9855aacdb179c7a42fd815cfa1/paypal-2x.png?ecom2=true&amp;width=128&amp;quality=100 2x" src="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/4eXbeetlGwMke2MkY4Kkkw/1d422b9855aacdb179c7a42fd815cfa1/paypal-2x.png?ecom2=true&amp;" alt="" data-srcset="https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/4eXbeetlGwMke2MkY4Kkkw/1d422b9855aacdb179c7a42fd815cfa1/paypal-2x.png?ecom2=true&amp;width=64&amp;quality=100 1x, https://www.danielwellington.com/ecom2-image-bucket/mv3xw5mnbbp0/4eXbeetlGwMke2MkY4Kkkw/1d422b9855aacdb179c7a42fd815cfa1/paypal-2x.png?ecom2=true&amp;width=128&amp;quality=100 2x" class="m-2">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                                    <p class="custom-font-1">
+                                        We offer free returns on all our products. You have the right to return any/all
+                                        products you have purchased directly from our website within 30 days of
+                                        receiving
+                                        the item. The product(s) must be unused – in its original packaging with labels
+                                        and
+                                        protective stickers intact - and in the same condition as when the watch was
+                                        received. <br><br>
+                                        Products purchased directly from our website must be returned to our warehouse
+                                        for a
+                                        full refund; the product (s) cannot be returned to a local dealer.
+                                        Please note that you may be charged the shipping costs for returning this
+                                        package to
+                                        us. <br><br>
+                                        ELite is not responsible for lost items during the return.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Review -->
+            <section>
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <h6 class="custom-font-2-bold">Customer Reviews</h6>
+                            </div>
+                            <div class="row">
+                                <div class="review-summary">
+                                    <div class="text-center border-right pr-3">
+                                        <span class="vote-summary custom-font-5-bold">5.0</span>
+                                        <div class="reviews-detail mb-1">
+                                            <span class="star-summary custom-font-3 text-warning m-0">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <span class="num-review custom-font-3">1 Review</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-1 ml-3">
+                                    <!-- 5 star -->
+                                    <div id="vote-5s" class="row custom-font-0 m-0">
+                                        <div class="text-warning">
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
+                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="numVote">0</div>
+                                    </div>
+                                    <!-- 4 star -->
+                                    <div id="vote-4s" class="row custom-font-0 m-0">
+                                        <div class="text-warning">
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class='fal fa-star'></i>
+                                        </div>
+                                        <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
+                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="numVote">0</div>
+                                    </div>
+                                    <!-- 3 star -->
+                                    <div id="vote-3s" class="row custom-font-0 m-0">
+                                        <div class="text-warning">
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                        </div>
+                                        <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
+                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
+                                        </div>
+                                        <div class="numVote">0%</div>
+                                    </div>
+                                    <!-- 2 star -->
+                                    <div id="vote-2s" class="row custom-font-0 m-0">
+                                        <div class="text-warning">
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                        </div>
+                                        <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
+                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
+                                        </div>
+                                        <div class="numVote">0%</div>
+                                    </div>
+                                    <!-- 1 star -->
+                                    <div id="vote-1s" class="row custom-font-0 m-0">
+                                        <div class="text-warning">
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                        </div>
+                                        <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
+                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
+                                        </div>
+                                        <div class="numVote">0%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="container">
+                                <div class="row">
+                                    <h6 class="custom-font-1-bold">Review this product</h6>
+
+                                </div>
+                                <div class="row">
+                                    <p class="custom-font-3 mb-2">Share your thoughts with other customers</p>
+                                </div>
+                                <div class="row">
+                                    <a class="btn btn-sm btn-warning rounded-0 pl-4 pr-4" href="#">Write a customer
+                                        review</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-9">
+
+                            <div class="review-block">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <!-- <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
+                                            class="img-rounded"> -->
+                                        <div style="width:60px;height:60px" class="review-avt bg-gray-700 text-white text-center rounded-circle">
+                                            A
+                                        </div>
+                                        <div class="review-block-name">
+                                            <p class="custom-font-1">nktailor</p>
+                                        </div>
+                                        <div class="review-block-date">January 29, 2016<br /></div>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="review-block-rate text-warning">
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class="fas fa-star" aria-hidden="true"></i>
+                                            <i class='fal fa-star'></i>
+                                            <i class='fal fa-star'></i>
+                                        </div>
+                                        <div class="review-block-title">this was nice in buy</div>
+                                        <div class="review-block-description">this was nice in buy. this was nice in
+                                            buy. this was nice in buy. this was nice in buy this was nice in buy this
+                                            was nice in buy this was nice in buy this was nice in buy</div>
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="form-group row">
+                        <label class="col-form-label text-uppercase custom-font-5-bold">Send your reviews</label>
+                    </div>
+                    <div class="form-group row custom-font-1-bold">
+                        <label for="inputPassword" class="col-md-3 col-form-label mb-1 p-0">1. Your display name</label>
+                        <div class="col-sm-10 p-0">
+                            <input id="review-name" type="text" class="form-control rounded-0">
+                        </div>
+                    </div>
+                    <div class="form-group row custom-font-1-bold">
+                        <label class="col-form-label mr-3">2. Your rating: </label>
+                        <div class="rating-input pt-2 text-warning">
+                            <i class="fal fa-star" data-value="1"></i>
+                            <i class="fal fa-star" data-value="2"></i>
+                            <i class="fal fa-star" data-value="3"></i>
+                            <i class='fal fa-star' data-value="4"></i>
+                            <i class='fal fa-star' data-value="5"></i>
+                        </div>
+                        <input id="review-rate" type="number" hidden class="form-control rounded-0">
+                    </div>
+                    <div class="form-group row custom-font-1-bold">
+                        <label for="inputPassword" class="col-md-3 mb-1 col-form-label p-0">3. Title</label>
+                        <div class="col-sm-10 p-0">
+                            <input id="review-head" type="text" class="form-control rounded-0">
+                        </div>
+                    </div>
+                    <div class="form-group row custom-font-1-bold">
+                        <label for="inputPassword" class="col-md-3 mb-1 col-form-label p-0">4. Your reviews</label>
+                        <div class="col-sm-10 p-0">
+                            <textarea id="review-content" type="text" class="form-control rounded-0" rows="5" placeholder="Input your reviews here"></textarea>
+                        </div>
+                    </div>
+
+                    <a href="#" id='btn-sendreview' class="row btn btn-sm pt-2 pb-2 pl-5 pr-5 btn-warning rounded-0">SEND YOUR REVIEW</a>
+                </form>
+            </section>
         </div>
     </div>
 
@@ -233,8 +500,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <form class="signup-form">
                     <label class="signup-form-label">Email address</label>
-                    <input name="email" type="email" aria-la bel="email" class="signup-input" value=""
-                        oninput="textDidchange()">
+                    <input name="email" type="email" aria-la bel="email" class="signup-input" value="" oninput="textDidchange()">
                     <span class="input-warning"></span>
                     <button class="signup-button" type="button" disabled="disabled" action="insertEmail">
                         <span class="signup-span">Subscribe</span>
@@ -247,33 +513,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="letter-footer">
                 <!-- Link facebook -->
-                <a href="https://www.facebook.com/" title="Facebook" target="_blank" rel="noopener noreferrer"
-                    class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
+                <a href="https://www.facebook.com/" title="Facebook" target="_blank" rel="noopener noreferrer" class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <!-- Link instagram -->
-                <a href="https://www.instagram.com/" title="Instagram" target="_blank" rel="noopener noreferrer"
-                    class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
+                <a href="https://www.instagram.com/" title="Instagram" target="_blank" rel="noopener noreferrer" class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <!-- Link Youtube -->
-                <a href="https://youtube.com/" title="Youtube" target="_blank" rel="noopener noreferrer"
-                    class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
+                <a href="https://youtube.com/" title="Youtube" target="_blank" rel="noopener noreferrer" class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
                     <i class="fab fa-youtube"></i>
                 </a>
                 <!-- Link Twitter -->
-                <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener noreferrer"
-                    class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
+                <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener noreferrer" class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
                     <i class="fab fa-twitter"></i>
                 </a>
                 <!-- Link pinterest -->
-                <a href="https://www.pinterest.com/" title="Pinterest" target="_blank" rel="noopener noreferrer"
-                    class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
+                <a href="https://www.pinterest.com/" title="Pinterest" target="_blank" rel="noopener noreferrer" class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
                     <i class="fab fa-pinterest-p"></i>
                 </a>
                 <!-- Link snapchat -->
-                <a href="https://www.snapchat.com/" title="snapchat" target="_blank" rel="noopener noreferrer"
-                    class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
+                <a href="https://www.snapchat.com/" title="snapchat" target="_blank" rel="noopener noreferrer" class="socialIcons__SocialLink-sc-1cs9t32-0 hmxtUr">
                     <i class="fab fa-snapchat-ghost"></i>
                 </a>
             </div>
@@ -353,10 +613,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="container">
                         <div class="row offset-md-3 text-center">
                             <div class="col-12 col-sm-6">
-                                <img src="https://imaginary.dtx.asia/fit?auto=png&format=png&width=60&url=https%3A%2F%2Fcurnonwatch.com%2Fmomo-5Wx.png%3Fauto%3Dpng%26format%3Dpng%26width%3D60&nocrop=true&type=auto&height=1080"
-                                    alt="momoIcon">
-                                <img src="https://imaginary.dtx.asia/fit?auto=png&format=png&width=60&url=https%3A%2F%2Fcurnonwatch.com%2Fvnpay-aWk.png%3Fauto%3Dpng%26format%3Dpng%26width%3D60&nocrop=true&type=auto&height=1080"
-                                    alt="VNPayIcon">
+                                <img src="https://imaginary.dtx.asia/fit?auto=png&format=png&width=60&url=https%3A%2F%2Fcurnonwatch.com%2Fmomo-5Wx.png%3Fauto%3Dpng%26format%3Dpng%26width%3D60&nocrop=true&type=auto&height=1080" alt="momoIcon">
+                                <img src="https://imaginary.dtx.asia/fit?auto=png&format=png&width=60&url=https%3A%2F%2Fcurnonwatch.com%2Fvnpay-aWk.png%3Fauto%3Dpng%26format%3Dpng%26width%3D60&nocrop=true&type=auto&height=1080" alt="VNPayIcon">
                             </div>
                             <div class="col-12 col-sm-6">
                                 <img src="<?php echo base_url(); ?>img/bct-5Sz.png" alt="" style="width: 100%;">
@@ -367,6 +625,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </footer>
+
+     <!-- Modal Signin -->
+     <div id="signModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sign In</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fal fa-user"></i></span>
+                                <input id="user" type="text" class="form-control" placeholder="Username" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fal fa-lock"></i></span>
+                                <input id="pass" type="text" class="form-control" name="password" placeholder="Password" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block btn-lg rounded-0 sign_in">Sign In</button>
+                        </div>
+                        <p class="hint-text"><a href="#">Forgot Password?</a></p>
+                    </form>
+                </div>
+                <div class="modal-footer">Don't have an account? <a href="#">Create one</a></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Script for get Fontawesome pro version -->
     <script src="<?php echo base_url(); ?>vendors/js/nghiaxcvxc.js"></script>
@@ -382,28 +673,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- shop script -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/script.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/shop.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/base.js"></script>
 
     <script>
-    function loadReviewStar() {
-        var id = "<?php echo  $dataProduct[0]['ID'] ?>";
-        $.ajax({
-            type: "POST",
-            url: '<?php echo base_url(); ?>index.php/admin/ProductManage/getReviewOfProductByID_Ajax/',
-            dataType: 'json',
-            data: {
-                id: id,
-            },
-            success: function(data) {
-                displayStar(data);
-            }
-        });
-    }
+        function loadReviewStar() {
+            var id = "<?php echo  $dataProduct[0]['ID'] ?>";
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url(); ?>index.php/admin/ProductManage/getReviewOfProductByID_Ajax/',
+                dataType: 'json',
+                data: {
+                    id: id,
+                },
+                success: function(data) {
+                    displayStar(data);
+                }
+            });
+        }
 
-    function displayStar(data) {
-        var count = data[0]['count'];
-        var sum = data[0]['sum'];
-        var point = sum / count;
-        if (count != 0) {
+        function loadFeedback() {
+            var id = "<?php echo  $dataProduct[0]['ID'] ?>";
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url(); ?>index.php/admin/ProductManage/getListFeedbackByID/',
+                dataType: 'json',
+                data: {
+                    id: id,
+                },
+                success: function(data) {
+                    console.log(data);
+                    displayFeedback(data);
+                }
+            });
+        }
+
+        function displayStar(data) {
+            var count = data[0]['count'];
+            var sum = data[0]['sum'];
+            var point = sum / count;
+
             // var x = point / 5;
             var htmlOut = "";
 
@@ -418,12 +726,243 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                 }
             }
-            $("#starReview").html(htmlOut);
-            $("#numReview").html("(" + count + (count > 1 ? " Reviews" : " Review") + ")");
+
+            $('.vote-summary').html((Math.round((count == 0 ? 0 : point) * 100) / 100).toFixed(1) +
+                '<small>/ 5</small>');
+            $(".star-summary").html(htmlOut);
+            $(".num-review").html("(" + count + (count > 1 ? " Reviews" : " Review") + ")");
+
+            $('#vote-5s .numVote').html(data[0]['v5']);
+            $('#vote-4s .numVote').html(data[0]['v4']);
+            $('#vote-3s .numVote').html(data[0]['v3']);
+            $('#vote-2s .numVote').html(data[0]['v2']);
+            $('#vote-1s .numVote').html(data[0]['v1']);
+
+            $('#vote-5s .progress .progress-bar').attr('style', 'width:' + (data[0]['v5'] / count) * 100 + '%');
+            $('#vote-4s .progress .progress-bar').attr('style', 'width:' + (data[0]['v4'] / count) * 100 + '%');
+            $('#vote-3s .progress .progress-bar').attr('style', 'width:' + (data[0]['v3'] / count) * 100 + '%');
+            $('#vote-2s .progress .progress-bar').attr('style', 'width:' + (data[0]['v2'] / count) * 100 + '%');
+            $('#vote-1s .progress .progress-bar').attr('style', 'width:' + (data[0]['v1'] / count) * 100 + '%');
+
+
         }
 
+        function displayFeedback(data) {
+            if (data.length == 0) {
+                $('.review-block').html("");
+            } else {
+                htmlOut = '';
+                for (index = 0; index < data.length; index++) {
+                    htmlOut += '<div class="row"><div class="col-sm-3">';
+                    if (data[index].avatar != '') {
+                        htmlOut +=
+                            '<img style="width:60px;height:60px" height="60px" src="' + data[index].avatar +
+                            '" class="img-rounded border rounded-circle ml-2">'
+                    } else {
+                        avt = data[index].name.charAt(0);
+                        htmlOut +=
+                            '<div style="width:60px;height:60px" class="review-avt bg-gray-700 ml-2 text-white text-center rounded-circle">' +
+                            avt + '</div>';
+                    }
+
+                    htmlOut +=
+                        '<div class="review-block-name text-capitalize"><p class="custom-font-3-bold mb-0">' + data[index]
+                        .name +
+                        '</p></div>' + '<div class="review-block-date">' + dateLongFormat(data[index].date) +
+                        '<br /></div></div>' +
+                        '<div class="col-sm-9"><div class="review-block-rate text-warning">';
+                    for (var i = 1; i <= 5; i++) {
+                        htmlOut += (i <= data[index].vote) ? "<i class='fas fa-star'></i>" :
+                            "<i class='fal fa-star'></i>";
+                    }
+                    htmlOut += '</div>' +
+                        '<div class="review-block-title">' + data[index].head + '</div>' +
+                        '<div class="review-block-description">' + (data[index].content == null ? ' ' : data[index]
+                            .content) + '</div></div></div><hr />';
+
+                }
+                $('.review-block').html(htmlOut);
+            }
+        }
+
+        loadReviewStar();
+        loadFeedback();
+        var rateDefault = 0;
+        $(".rating-input i").hover(function() {
+            value = $(this).data('value');
+            for (ind = 0; ind < $(".rating-input i").length; ind++) {
+                $(".rating-input i").eq(ind).removeClass(ind + 1 <= value ? 'fal' : 'fas').addClass(ind + 1 <=
+                    value ? 'fas' : 'fal');
+                // $(".rating-input i").eq(ind).removeClass('fal').addClass('fas');
+            }
+        });
+        $('.form-group').hover(function() {
+            setDefaultRating();
+        });
+        $(".rating-input i").click(function() {
+            rateDefault = $(this).data('value');
+            for (ind = 0; ind < $(".rating-input i").length; ind++) {
+                $(".rating-input i").eq(ind).removeClass(ind + 1 <= value ? 'fal' : 'fas').addClass(ind + 1 <=
+                    value ? 'fas' : 'fal');
+                // $(".rating-input i").eq(ind).removeClass('fal').addClass('fas');
+            }
+            $('#review-rate').val(rateDefault);
+        });
+
+        function setDefaultRating() {
+            for (ind = 0; ind < $(".rating-input i").length; ind++) {
+                $(".rating-input i").eq(ind).removeClass(ind + 1 <= rateDefault ? 'fal' : 'fas').addClass(ind + 1 <=
+                    rateDefault ? 'fas' : 'fal');
+                // $(".rating-input i").eq(ind).removeClass('fal').addClass('fas');
+            }
+        }
+
+        $('#btn-sendreview').click(function() {
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url(); ?>index.php/admin/ProductManage/saveReview',
+                dataType: 'json',
+                data: {
+                    idProduct: '<?php echo  $dataProduct[0]['ID'] ?>',
+                    displayName: $('#review-name').val(),
+                    vote: $('#review-rate').val(),
+                    head: $('#review-head').val(),
+                    content: $('#review-content').val()
+                },
+                success: function(data) {
+                    if (data.status == 'complete') {
+                        $(window).scrollTop(0);
+                        location.reload();
+                    }
+                }
+            });
+        })
+    </script>
+
+    <script>
+        function displayDetailContent() {
+            json = JSON.parse('<?php echo $dataProduct[0]['details'] ?>');
+
+            if (json != null) {
+                innerhtml = "";
+                for (index = 0; index < json.length; index++) {
+
+                    innerhtml += '<tr>' +
+                        '<td class="text-left font-weight-light">' + json[index].key +
+                        '</td>' +
+                        '<td class="text-right">' + json[index].val +
+                        '</td>' +
+                        '</tr>';
+                    $('.table-details').append(innerhtml);
+                }
+                $('.detail-content').html(innerhtml);
+            }
+        }
+        displayDetailContent();
+    </script>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>js/user.js"></script>
+
+<script>
+    href = '';
+    checkToken();
+
+    function checkToken() {
+        token_access = loadToken();
+        if (token_access != '') {
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url(); ?>index.php/admin/UserManage/getInfoToken',
+                dataType: 'json',
+                data: {
+                    token: token_access.token,
+                },
+                success: function(dataReturned) {
+                    if (dataReturned.length > 0) {
+                        displayInfo(dataReturned[0]);
+                    }
+                }
+            });
+        }
     }
-    loadReviewStar();
+
+    function displayInfo(info) {
+        if (info != '') {
+            $('.signin_info').html('<a class="nav-link dropdown-toggle home-navbar-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, ' + info.firstName + ' &nbsp<i class="fal fa-user-check"></i></a>');
+            $('.signin_info').append($('<div class="dropdown-menu need-hover-drop rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">' +
+                '<a class="dropdown-item custom-font-4 account_" href="#">Account</a>' +
+                '<a class="dropdown-item custom-font-4 orders_" href="#">Orders</a>' +
+                '<div class="dropdown-divider"></div>' +
+                '<a class="dropdown-item custom-font-4 signout_" href="#">Sign out</a>' +
+                '</div>'));
+            $('.signin_info').on('mouseover', function() {
+                fadeBackground();
+            }).on('mouseout', function() {
+                hideBackground();
+            })
+            $('.signin_info').on('click', '.signout_', function() {
+                signOut();
+            })
+        }
+    }
+    $('.sign_in').click(function() {
+        user = $('#user').val();
+        pass = $('#pass').val();
+        if (user != '' && pass != '') {
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url(); ?>index.php/admin/UserManage/signin',
+                dataType: 'json',
+                data: {
+                    username: user,
+                    password: pass,
+                },
+                success: function(return_) {
+                    saveToken(return_);
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
+    $('#btn-checkout').click(function() {
+        if (loadToken() != '') {
+            window.location.href = '<?php echo base_url(); ?>index.php/checkout';
+        } else {
+            href = '<?php echo base_url(); ?>index.php/checkout';
+            closeNav();
+            $('.btn-signin').trigger('click');
+        }
+    })
+    $('.shop_category').on('mouseover', function() {
+        fadeBackground();
+    }).on('mouseout', function() {
+        hideBackground();
+    })
+</script>
+
+    <!-- category -->
+    <script>
+        $.ajax({
+            type: "GET",
+            url: '<?php echo base_url(); ?>index.php/admin/ProductManage/requestCategory',
+            dataType: 'json',
+            success: function(dataReturned) {
+                displayCategory(dataReturned)
+            }
+        });
+
+        function displayCategory(info) {
+            output = '<a class="dropdown-item custom-font-4" href="shop">All Category</a>';
+            for (i = 0; i < info.length; i++) {
+                output += '<div class="dropdown-divider"></div>' +
+                    '<a class="dropdown-item custom-font-4" data-id="' + info[i].ID + '" href="shop?src=' + info[i].DisplayName + '">' + info[i].DisplayName + '</a>'
+            }
+            $('#dropdownCategory').html(output);
+            
+            sth = parseURLParams(window.location.search);
+            $('.category_display').html(sth != null ? sth.src[0].toUpperCase() : 'All Category'.toUpperCase());
+        }
     </script>
 
 </body>

@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class ProductManage extends CI_Controller {
+class ProductManage extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -23,15 +24,26 @@ class ProductManage extends CI_Controller {
 		// $this->load->view('admin/product_view');
 		$this->load->model('Product_model');
 		$data = $this->Product_model->getProduct();
-		$data = array('dataProduct' => $data);
+
+		$filter = (isset($_GET['filter'])) ? $_GET['filter'] : '';
+		$data = array(
+			'dataProduct' => $data,
+			'filter' => $filter
+		);
 		$this->load->view('admin/product_view', $data, FALSE);
 		// $this->load->view('admin/addSuccess_View');
-		
+
 
 	}
 
-	public function cancel() {
-		header('Location: http://localhost:8080/01/index.php/admin/Productmanage/');
+	public function addProduct()
+	{
+		$this->load->view('admin/addProduct_view');
+	}
+
+	public function cancel()
+	{
+		header('Location: http://localhost:2104/01/index.php/admin/Productmanage/');
 	}
 
 	public function editProduct($id)
@@ -50,7 +62,7 @@ class ProductManage extends CI_Controller {
 		);
 
 		// echo "<pre>";
-        // var_dump($data);
+		// var_dump($data);
 
 		$this->load->view('admin/editProduct_view', $data, FALSE);
 	}
@@ -59,11 +71,9 @@ class ProductManage extends CI_Controller {
 	{
 		$this->load->model('Product_model');
 
-		if ($this->Product_model->removeProduct($id) > 0 ) {
-			header('Location: http://localhost:8080/01/index.php/admin/Productmanage/');
-		}
-		else {
-
+		if ($this->Product_model->removeProduct($id) > 0) {
+			echo 'ngon';
+		} else {
 		};
 	}
 
@@ -75,8 +85,8 @@ class ProductManage extends CI_Controller {
 
 		$categoryID = $this->input->post('product-category');
 
-		$price = $this->input->post('product-price');		
-		
+		$price = $this->input->post('product-price');
+
 		$description = $this->input->post('product-description');
 
 		$image = $this->input->post('product-image2');
@@ -88,102 +98,113 @@ class ProductManage extends CI_Controller {
 		$discount = $discount / 100;
 
 		$style = $this->input->post('product-style');
-		
+
+		$inventory = $this->input->post('product-inventory');
+
+		$detail = $this->input->post('product-detail');
 
 		if (basename($_FILES["product-image"]["name"]) == null) {
-			
-		}
-		else {
+		} else {
 
 			// Solve Image
-			$target_dir = "FilesUpload/";
+			$target_dir = "img_product/";
 			$target_file = $target_dir . basename($_FILES["product-image"]["name"]);
 			$uploadOk = 1;
-			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 			// Check if image file is a actual image or fake image
-			if(isset($_POST["submit"])) {
+			if (isset($_POST["submit"])) {
+				$check = getimagesize($_FILES["product-image"]["tmp_name"]);
+				if ($check !== false) {
+					// echo "File is an image - " . $check["mime"] . ".";
+					$uploadOk = 1;
+				} else {
+					// echo "File is not an image.";
+					$uploadOk = 0;
+				}
+			}
+
+			// Check file size
+			if ($_FILES["product-image"]["size"] > 5000000) {
+				//   echo "Sorry, your file is too large.";
+				$uploadOk = 0;
+			}
+
+			// Allow certain file formats
+			if (
+				$imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+				&& $imageFileType != "gif" &&  $imageFileType != "webp"
+			) {
+				//   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				$uploadOk = 0;
+			}
+			move_uploaded_file($_FILES["product-image"]["tmp_name"], $target_file);
+			$image = base_url() . $target_file;
+		}
+
+		$this->load->model('Product_model');
+
+		if ($this->Product_model->updateProduct($id, $name, $categoryID, $description, $price, $image, $status, $discount, $style, $inventory, $detail) > 0) {
+			header('Location: http://localhost:2104/01/index.php/admin/Productmanage/');
+		} else {
+		}
+	}
+
+	public function updateStatus()
+	{
+		$id = $_POST["id"];
+		$status = $_POST["status"];
+		$this->load->model('Product_model');
+		echo ($this->Product_model->updateStatus($id, $status) > 0)  ? "ngon" : "toang";
+	}
+
+	public function insertProduct()
+	{
+
+		// Solve Image
+		$target_dir = "img_product/";
+		$target_file = $target_dir . basename($_FILES["product-image"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+		// Check if image file is a actual image or fake image
+		if (isset($_POST["submit"])) {
 			$check = getimagesize($_FILES["product-image"]["tmp_name"]);
-			if($check !== false) {
+			if ($check !== false) {
 				// echo "File is an image - " . $check["mime"] . ".";
 				$uploadOk = 1;
 			} else {
 				// echo "File is not an image.";
 				$uploadOk = 0;
 			}
-			}
-
-			// Check file size
-			if ($_FILES["product-image"]["size"] > 5000000) {
-			//   echo "Sorry, your file is too large.";
-			$uploadOk = 0;
-			}
-
-			// Allow certain file formats
-			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-			&& $imageFileType != "gif" &&  $imageFileType != "webp")  {
-			//   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-			$uploadOk = 0;
-			}
-			move_uploaded_file($_FILES["product-image"]["tmp_name"], $target_file);
-			$image = base_url().$target_file;
-		}
-
-		$this->load->model('Product_model');
-
-		if ($this->Product_model->updateProduct($id, $name, $categoryID ,$description, $price, $image, $status, $discount, $style) > 0 ) {
-			header('Location: http://localhost:8080/01/index.php/admin/Productmanage/');
-		}
-		else {
-
-		}
-
-	}
-
-	public function insertProduct() {
-
-		// Solve Image
-		$target_dir = "FilesUpload/";
-		$target_file = $target_dir . basename($_FILES["product-image"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-		// Check if image file is a actual image or fake image
-		if(isset($_POST["submit"])) {
-		  $check = getimagesize($_FILES["product-image"]["tmp_name"]);
-		  if($check !== false) {
-			// echo "File is an image - " . $check["mime"] . ".";
-			$uploadOk = 1;
-		  } else {
-			// echo "File is not an image.";
-			$uploadOk = 0;
-		  }
 		}
 
 		// Check file size
 		if ($_FILES["product-image"]["size"] > 5000000) {
-		//   echo "Sorry, your file is too large.";
-		  $uploadOk = 0;
+			//   echo "Sorry, your file is too large.";
+			$uploadOk = 0;
 		}
 
 		// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-		&& $imageFileType != "gif" &&  $imageFileType != "webp")  {
-		//   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-		  $uploadOk = 0;
+		if (
+			$imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" &&  $imageFileType != "webp"
+		) {
+			//   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+			$uploadOk = 0;
 		}
 
 		// Check if $uploadOk is set to 0 by an error
 		if ($uploadOk == 0) {
-		//   echo "Sorry, your file was not uploaded.";
-		// if everything is ok, try to upload file
+			//   echo "Sorry, your file was not uploaded.";
+			// if everything is ok, try to upload file
 		} else {
-		  if (move_uploaded_file($_FILES["product-image"]["tmp_name"], $target_file)) {
-			// echo "The file ". htmlspecialchars( basename( $_FILES["product-image"]["name"])). " has been uploaded.";
-		  } else {
-			// echo "Sorry, there was an error uploading your file.";
-			$image = "";
-		  }
+			if (move_uploaded_file($_FILES["product-image"]["tmp_name"], $target_file)) {
+				// echo "The file ". htmlspecialchars( basename( $_FILES["product-image"]["name"])). " has been uploaded.";
+			} else {
+				// echo "Sorry, there was an error uploading your file.";
+				$image = "";
+			}
 		}
 
 
@@ -193,11 +214,11 @@ class ProductManage extends CI_Controller {
 
 		$category = $this->input->post('product-category');
 
-		$price = $this->input->post('product-price');		
-		
+		$price = $this->input->post('product-price');
+
 		$description = $this->input->post('product-description');
 
-		$image = base_url().$target_file;
+		$image = base_url() . $target_file;
 
 		$discount = $this->input->post('product-discount');
 
@@ -205,36 +226,43 @@ class ProductManage extends CI_Controller {
 
 		$style = $this->input->post('product-style');
 
-		if ($name == '' || $category == 0 || $price == '' || $uploadOk == 0 || $style == '' || $discount == 0) {
+		$inventory = $this->input->post('product-inventory');
+
+		$detail = $this->input->post('product-detail');
+
+		$idAdmin = $this->input->post('product-idAdmin');
+
+
+		date_default_timezone_set('Asia/Bangkok');
+		$dateCreated = date('Y-m-d H:i:s');
+
+		if ($name == '' || $category == 0 || $price == '' || $uploadOk == 0 || $style == 0 || $inventory < 0) {
 			echo "failed";
-		}
-		else {
+		} else {
 			$this->load->model('Product_model');
 
-			if ($this->Product_model->insertProduct($id, $name, $category ,$description, $price, $image,1,$discount,$style) > 0) {
+			if ($this->Product_model->insertProduct($id, $name, $category, $description, $price, $image, 1, $discount, $style, $inventory, $detail, $idAdmin, $dateCreated) > 0) {
 				// $this->load->view('admin/addSuccess_View');
-				header('Location: http://localhost:8080/01/index.php/admin/Productmanage/');
+				header('Location: http://localhost:2104/01/index.php/admin/Productmanage/');
 				// $this->index();
-			}
-			else {
+			} else {
 				$this->load->view('admin/addError_View');
 			}
 		}
-		
 	}
 
 	public function requestCategory()
 	{
 		$this->load->model('Product_model');
 		$data = $this->Product_model->getCategory();
-		$data = array('category' => $data);
 		$data = json_encode($data);
 		echo $data;
 		// echo "<pre>";
-        // echo $data;
+		// echo $data;
 	}
 
-	public function getReviewOfProductByID_Ajax() {
+	public function getReviewOfProductByID_Ajax()
+	{
 		$id = $_POST['id'];
 
 		$this->load->model('Product_model');
@@ -243,7 +271,36 @@ class ProductManage extends CI_Controller {
 		echo $result;
 	}
 
-	public function requestStyleOptions_Ajax() {
+	public function getListFeedbackByID()
+	{
+		$id = $_POST['id'];
+		$this->load->model('Product_model');
+		$result = $this->Product_model->getListFeedbackByID($id);
+		$result = json_encode($result);
+		echo $result;
+	}
+
+	public function saveReview()
+	{
+
+		$idProduct = $this->input->post('idProduct');
+		$displayName = $this->input->post('displayName');
+		$vote = $this->input->post('vote');
+		$head = $this->input->post('head');
+		$content = $this->input->post('content');
+		date_default_timezone_set('Asia/Bangkok');
+		$date = date('Y-m-d H:i:s');
+
+		$this->load->model('Product_model');
+		if ($this->Product_model->insertReview($idProduct, $date, $displayName, $vote, $head, $content) > 0) {
+			$send = array('status' => 'complete', 'id' => $idProduct);
+			$send = json_encode($send);
+			echo $send;
+		}
+	}
+
+	public function requestStyleOptions_Ajax()
+	{
 		$this->load->model('Product_model');
 		$result = $this->Product_model->getStyleOptions();
 		$result = json_encode($result);
@@ -258,4 +315,26 @@ class ProductManage extends CI_Controller {
 		echo $data;
 	}
 
+	public function requestCountProductWithStatus()
+	{
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getCountProductWithStatus();
+		$data = json_encode($data);
+		echo $data;
+	}
+
+	public function getMostViewProduct()
+	{
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getMostViewProduct();
+		$data = json_encode($data);
+		echo $data;
+	}
+	public function getBestSellerProduct()
+	{
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getBestSellerProduct();
+		$data = json_encode($data);
+		echo $data;
+	}
 }

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url(); ?>vendors/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>css/sb-admin-2.min.css" rel="stylesheet">
@@ -32,6 +30,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Nghia's styles for thí template -->
     <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet">
 
+    <!-- date picker -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>vendors/daterangepicker-bootstrap/daterangepicker-bs3.css" />
+
 </head>
 
 <body id="page-top">
@@ -40,16 +41,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="<?php echo base_url(); ?>index.php/admin/Dashboard">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url(); ?>index.php/admin/dashboard">
                 <div class="sidebar-brand-icon">
-                    <img src="<?php echo base_url(); ?>img/svg/logo.svg" alt="logo" height="50px" width="50px"
-                        fill="white">
-                    <!-- <i class="fas fa-laugh-wink"></i> -->
+                    <div class="sidebar-brand-icon">
+                        <img src="<?php echo base_url(); ?>img/svg/logo.svg" alt="logo" height="100px" width="100px" color="white">
+                        <!-- <i class="fas fa-laugh-wink"></i> -->
+                    </div>
                 </div>
+
             </a>
 
             <!-- Divider -->
@@ -57,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>index.php/admin/Dashboard">
+                <a class="nav-link" href="<?php echo base_url(); ?>index.php/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -67,89 +69,86 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Manage
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Product manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
+                    <i class="fal fa-shopping-bag"></i>
+                    <span> Product</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/productmanage">All
+                            products</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/productmanage/addproduct">Add new product</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Order manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
+                    <i class="fal fa-archive"></i>
+                    <span> Order</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
+                <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage">All
+                            Orders</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage?filter=unsolved">Unsolved</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage?filter=refunded">Refunded</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Customer manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer" aria-expanded="true" aria-controls="collapseCustomer">
+                    <i class="fal fa-users"></i>
+                    <span> Customers</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
+                            Customers</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                analyse
+            </div>
+
+            <!-- Nav Item - analyse -->
+
+            <!-- analyse Earning -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
+                    <i class="fal fa-dollar-sign"></i>
+                    <span> Earnings</span>
+                </a>
+            </li>
+
+            <!-- analyse product -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductAnalyse" aria-expanded="true" aria-controls="collapseProductAnalyse">
+                    <i class="fal fa-box-usd"></i>
+                    <span> Products Analyse</span>
+                </a>
+                <div id="collapseProductAnalyse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/products_overview">Overview</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/products_performance">Product Analyse</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -174,11 +173,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-dark" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -192,18 +189,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-dark" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -216,15 +209,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -267,22 +258,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                                            alt="">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -293,8 +281,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
-                                            alt="">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -305,8 +292,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
-                                            alt="">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -317,8 +303,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -335,15 +320,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                                <img class="img-profile rounded-circle"
-                                    src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -372,20 +354,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header bg-white p-0">
 
                             <div class="row">
-
+                                <div class="col-sm-12">
+                                    <!-- Tabs -->
+                                    <section id="tabs">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <nav>
+                                                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                            <a class="nav-item nav-link active tab-element" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" data-filter="all" aria-selected="true">All</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" data-filter="unsolved" aria-selected="false">Unsolved</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" data-filter="confirmed" aria-selected="false">Confirmed</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" data-filter="shipped" aria-selected="false">Shipped</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="completed" aria-selected="false">Completed</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="cancelled" aria-selected="false">Cancelled</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="refunded" aria-selected="false">Refunded</a>
+                                                            <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="failed" aria-selected="false">Failed</a>
+                                                        </div>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
                             </div>
-
                         </div>
 
                         <!-- body -->
                         <div class="card-body custom-font-3">
                             <div class="table-responsive">
-                                <table class="table table-hover table-bordered" id="dataTable" width="100%"
-                                    cellspacing="0">
-                                    <thead class="thead-dark">
+                                <div class="container p-0 ml-0 mr-0 mb-3">
+                                    <div class="row ml-0">
+                                        <form class="custome-datepicker">
+                                            <fieldset>
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <div class="input-prepend input-group">
+                                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control custom-font-3" value="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <table class="table table-hover table-bordered" id="tableOrder" width="100%" cellspacing="0">
+                                    <thead class="">
                                         <tr>
                                             <th>ID</th>
                                             <th>Total</th>
@@ -398,41 +416,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </tr>
                                     </thead>
 
-                                    <tbody>
-                                        <?php foreach ($dataProduct as $key => $value): ?>
-                                        <tr class="text-capitalize">
-                                            <!-- id -->
-                                            <td><?= $value['id'] ?></td>
+                                    <tbody id="tableBodyContent">
 
-                                            <!-- total price -->
-                                            <td>$<?=$value['total'] ?></td>
-
-                                            <!-- date created -->
-                                            <td><?php
-                                             $oldday = $value['createAt'];
-                                             $newFormatDay = date("H:i d/m/Y", strtotime($oldday)); 
-                                             echo $newFormatDay;
-                                             ?>
-                                             </td>
-
-                                            <!-- payment method name -->
-                                            <td><?= $value['paymentMethod'] ?></td>
-
-                                            <!-- status -->
-                                            <td>
-                                            <div class="custom-tag" style="background: #<?= $value['statusColor'] ?>"> <?= $value['status'] ?></div>
-                                               
-                                            </td>
-
-                                            <!-- customer name -->
-                                            <td><?= $value['fullName'] ?></td>
-
-                                            <!-- action -->
-                                            <td class="text-center">
-                                                <a href="<?php echo base_url(); ?>index.php/admin/ordersmanage/detail/<?= $value['id'] ?>">Detail</a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach ?>
                                     </tbody>
                                 </table> <!-- end table -->
 
@@ -469,8 +454,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -488,6 +472,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 
+    <!-- change status mocal -->
+    <!-- <div id="statusModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-font-4 rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title"> <b>Change Status</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Click for change</p>
+                    <div class="btn-for-replace">
+                        <button class="custom-tag btn-status-change">Ngon</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary rounded-0">Save change</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
     <!-- script for get pro version fontawesome -->
     <script src="<?php echo base_url(); ?>vendors/js/nghiaxcvxc.js"></script>
 
@@ -502,31 +510,177 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url(); ?>js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?php echo base_url(); ?>vendors/datatables/jquery.dataTables.min.js"></script>
+    <!-- https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js -->
+    <script src="<?php echo base_url(); ?>vendors/datatables/jquery.dataTables.js"></script>
     <script src="<?php echo base_url(); ?>vendors/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="<?php echo base_url(); ?>js/demo/datatables-demo.js"></script>
+    <!-- date range picker -->
+    <script src="<?php echo base_url(); ?>vendors/daterangepicker-bootstrap/moment.js"></script>
+    <script src="<?php echo base_url(); ?>vendors/daterangepicker-bootstrap/daterangepicker.js"></script>
 
-    <!-- input Image -->
+
+    <!-- custom base script -->
+    <script src="<?php echo base_url(); ?>js/base.js"></script>
+
+    <!-- date picker -->
     <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#imageResult')
-                    .attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $(function() {
-        $('#upload').on('change', function() {
-            readURL(input);
+        // variable for filter
+        oTable = $('#tableOrder').DataTable({
+            "order": [
+                [2, "desc"]
+            ],
+            columnDefs: [{
+                    orderable: false,
+                    targets: 6
+                },
+                {
+                    targets: 4,
+                    className: 'text-capitalize'
+                }
+            ]
         });
-    });
+        dataFilter = "all";
+        minDateFilter = "";
+        maxDateFilter = "";
+        statusList = [];
+
+        $.fn.dataTableExt.afnFiltering.push(
+            function(oSettings, aData, iDataIndex) {
+                dataOK = false;
+                timeOK = false;
+
+                if (dataFilter == "all") {
+                    dataOK = true;
+                } else {
+                    if (aData[4].toLowerCase() == dataFilter) {
+                        dataOK = true;
+                    }
+                }
+
+                if (minDateFilter == "" && maxDateFilter == "") {
+                    timeOK = true;
+                } else {
+                    cur = new Date(aData[2].split(" ")[0]).getTime();
+                    if (cur >= minDateFilter && cur <= maxDateFilter) {
+                        timeOK = true;
+                    }
+                }
+
+                return dataOK && timeOK;
+            }
+        );
+
+        $(document).ready(function() {
+
+            $('#reservation').daterangepicker({
+                format: 'YYYY-MM-DD',
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            }, function(start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+            });
+
+            $('#reservation').on('cancel.daterangepicker', function(ev, picker) {
+                //do something, like clearing an input
+                $('#reservation').val('');
+                minDateFilter = '';
+                maxDateFilter = '';
+                oTable.draw();
+            });
+
+            $('#reservation').on('apply.daterangepicker', function(ev, picker) {
+                minDateFilter = new Date(picker.startDate.format('YYYY-MM-DD 00:00:00')).getTime();
+                maxDateFilter = new Date(picker.endDate.format('YYYY-MM-DD 23:59:59')).getTime();
+                oTable.draw();
+            });
+
+            $('.tab-element').on("click", function(event) {
+                dataFilter = $(this).data('filter').toLowerCase();
+                oTable.draw();
+                if (window.location.search != '' && dataFilter == 'all') {
+                    window.location.href = removeParam('filter', window.location.href);
+                }
+            })
+
+            $('#tableOrder tbody').on('click', 'tr', function() {
+                var data = oTable.row(this).data();
+                id = data[0];
+                window.location.href = '<?php echo base_url(); ?>index.php/admin/ordersmanage/detail?id=' + id;
+            });
+
+            // $('#tableOrder tbody').on('click', '.btn-status', function() {
+            //     $('#statusModal').modal('show');
+            //     $('.btn-for-replace').html($(this).clone());
+            // });
+
+
+            var orders = [];
+            $.ajax({
+                type: "GET",
+                url: '<?php echo base_url(); ?>index.php/admin/OrdersManage/requestOrderList_Ajax',
+                dataType: 'json',
+                success: function(data) {
+                    orders = data.reverse();
+                    displayTable(orders);
+                }
+            });
+
+            // get list status
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url(); ?>index.php/admin/OrdersManage/listOrderStatus',
+                dataType: 'json',
+                success: function(data) {
+                    if (data != null) {
+                        statusList = data;
+                    }
+                }
+            });
+
+            function displayTable(array) {
+                for (var index = 0; index < array.length; index++) {
+                    oTable.row.add([
+                        array[index].id,
+                        "$" + array[index].total,
+                        dateFormat(array[index].createAt),
+                        array[index].paymentMethod,
+                        '<span class="dot dot-sm dot-success" style="background: #' + array[index].statusColor + '"></span>' +
+                        array[index].status,
+                        array[index].fullName,
+                        '<a href="<?php echo base_url(); ?>index.php/admin/ordersmanage/detail?id=' + array[
+                            index].id + '">Detail</a>',
+                    ])
+                }
+                oTable.draw();
+            }
+
+            function createTableNow() {
+                if ($.fn.dataTable.isDataTable('#tableOrder')) {
+                    $('#tableOrder').DataTable().destroy();
+                } else {
+                    oTable = $('#tableOrder').DataTable({
+                        "order": [
+                            [2, "desc"]
+                        ],
+                        columnDefs: [{
+                            orderable: false,
+                            targets: 6
+                        }]
+                    });
+                }
+            }
+
+            // set default selected
+            function setDefaultSelectedTab() {
+                selected = '<?php echo $action ?>';
+                if (selected != '') {
+                    $(".nav").find("[data-filter='" + selected.toLowerCase() + "']").trigger("click");
+                }
+
+            }
+            setDefaultSelectedTab();
+        });
     </script>
 
 

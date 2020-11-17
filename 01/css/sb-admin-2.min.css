@@ -22,14 +22,14 @@
     --yellow: #f6c23e;
     --green: #449D44;
     --teal: #20c9a6;
-    --cyan: #36b9cc;
+    --cyan: #003049;
     --white: #fff;
     --gray: #858796;
     --gray-dark: #5a5c69;
     --primary: #4e73df;
     --secondary: #858796;
     --success: #449D44;
-    --info: #36b9cc;
+    --info: #003049;
     --warning: #f6c23e;
     --danger: #e74a3b;
     --light: #f8f9fc;
@@ -39,7 +39,7 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
 
@@ -182,7 +182,7 @@ a {
 
 a:hover {
     color: #224abe;
-    text-decoration: underline
+    /* text-decoration: underline */
 }
 
 a:not([href]) {
@@ -1975,7 +1975,7 @@ pre code {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    /* color: #6e707e; */
+    color: #333;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #d1d3e2;
@@ -1996,11 +1996,11 @@ pre code {
 
 .form-control:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 #6e707e
+    text-shadow: 0 0 0 #333
 }
 
 .form-control:focus {
-    color: #6e707e;
+    color: #333;
     background-color: #fff;
     border-color: #bac8f3;
     outline: 0;
@@ -2643,8 +2643,8 @@ fieldset:disabled a.btn {
 
 .btn-info {
     color: #fff;
-    background-color: #36b9cc;
-    border-color: #36b9cc
+    background-color: #003049;
+    border-color: #003049
 }
 
 .btn-info:hover {
@@ -2664,8 +2664,8 @@ fieldset:disabled a.btn {
 .btn-info.disabled,
 .btn-info:disabled {
     color: #fff;
-    background-color: #36b9cc;
-    border-color: #36b9cc
+    background-color: #003049;
+    border-color: #003049
 }
 
 .btn-info:not(:disabled):not(.disabled).active,
@@ -2955,14 +2955,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info {
-    color: #36b9cc;
-    border-color: #36b9cc
+    color: #003049;
+    border-color: #003049
 }
 
 .btn-outline-info:hover {
     color: #fff;
-    background-color: #36b9cc;
-    border-color: #36b9cc
+    background-color: #003049;
+    border-color: #003049
 }
 
 .btn-outline-info.focus,
@@ -2972,7 +2972,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-info.disabled,
 .btn-outline-info:disabled {
-    color: #36b9cc;
+    color: #003049;
     background-color: transparent
 }
 
@@ -2980,8 +2980,8 @@ fieldset:disabled a.btn {
 .btn-outline-info:not(:disabled):not(.disabled):active,
 .show>.btn-outline-info.dropdown-toggle {
     color: #fff;
-    background-color: #36b9cc;
-    border-color: #36b9cc
+    background-color: #003049;
+    border-color: #003049
 }
 
 .btn-outline-info:not(:disabled):not(.disabled).active:focus,
@@ -5198,7 +5198,7 @@ a.badge-success:focus {
 
 .badge-info {
     color: #fff;
-    background-color: #36b9cc
+    background-color: #003049
 }
 
 a.badge-info:focus,
@@ -6761,7 +6761,7 @@ button.bg-success:hover {
 }
 
 .bg-info {
-    background-color: #36b9cc!important
+    background-color: #003049!important
 }
 
 a.bg-info:focus,
@@ -6876,7 +6876,7 @@ button.bg-dark:hover {
 }
 
 .border-info {
-    border-color: #36b9cc!important
+    border-color: #003049!important
 }
 
 .border-warning {
@@ -9947,7 +9947,7 @@ a.text-success:hover {
 }
 
 .text-info {
-    color: #36b9cc!important
+    color: #003049!important
 }
 
 a.text-info:focus,
@@ -10255,8 +10255,8 @@ a:focus {
 }
 
 .bg-gradient-info {
-    background-color: #36b9cc;
-    background-image: linear-gradient(180deg, #36b9cc 10%, #258391 100%);
+    background-color: #003049;
+    background-image: linear-gradient(180deg, #003049 10%, #258391 100%);
     background-size: cover
 }
 
@@ -10402,11 +10402,11 @@ a:focus {
 }
 
 .border-left-info {
-    border-left: .25rem solid #36b9cc!important
+    border-left: .25rem solid #003049!important
 }
 
 .border-bottom-info {
-    border-bottom: .25rem solid #36b9cc!important
+    border-bottom: .25rem solid #003049!important
 }
 
 .border-left-warning {
@@ -10650,11 +10650,11 @@ a:focus {
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link {
-    color: #d1d3e2
+    /* color: #d1d3e2 */
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
-    color: #b7b9cc
+    /* color: #b7b9cc */
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link:active {
@@ -11610,4 +11610,50 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
+}
+
+.custome-datepicker .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.custome-datepicker .input-group-addon,
+.input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.custome-datepicker .input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+    display: table-cell;
+}
+
+.custome-datepicker .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.custome-datepicker .input-group-addon:first-child {
+    border-right: 0;
+}
+
+.custome-datepicker .input-group2 .form-control:first-child,
+.custome-datepicker .input-group-addon:first-child,
+.custome-datepicker .input-group-btn:first-child>.btn,
+.custome-datepicker .input-group-btn:first-child>.btn-group>.btn,
+.custome-datepicker .input-group-btn:first-child>.dropdown-toggle,
+.custome-datepicker .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.custome-datepicker .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }

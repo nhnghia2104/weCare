@@ -10,23 +10,23 @@ class Orders_model extends CI_Model {
         parent::__construct();
     }
 
-    public function insertOrders($id, $createAt, $total, $status, $email, $firstName, $lastName, $phone, $city, $address, $note)
-    {
-        $data = array ( 
-            'id' => $id, 
+    public function insertOrders($id, $createAt, $total, $idPayment, $status ,$paid, $payDate, $note, $idCustomer, $timeline, $shipping_address, $shipping_option_id) {
+		$data = array ( 
+            'id' => $id,
             'createAt' => $createAt,
-            'total' => $total,
-            'status' => $status, // paid, unpaid, cancel
-            'email' => $email,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'phone' => $phone,
-            'city' => $city,
-            'address' => $address,
+            'total ' => $total,
+            'idPayment' => $idPayment,
+            'status' => $status,
+            'paid' => $paid,
+            // 'payDate' => $payDate,
             'note' => $note,
+			'idCustomer' => $idCustomer,
+            'timeline' => $timeline,
+            'shipping_address' => $shipping_address,
+            'shipping_option_id' => $shipping_option_id
         );
         return $this->db->insert('orders', $data);
-    }
+	}
     public function insertOrdersDetail($id, $idOrder, $idProduct, $amount,$price,$discount, $totalSalePrice)
     {
         $data = array ( 
@@ -72,14 +72,56 @@ class Orders_model extends CI_Model {
         return $result;
     }
 
-    public function updateOrder($id, $paid, $status) {
+    public function updateOrder($id, $paid, $status, $payDate,$timeline) {
         $data = array (
             'status' => $status,
             'paid' => $paid,
+            'payDate' => $payDate,
+            'timeline' => $timeline
         );
 
         $this->db->where('id', $id);
         
         return $this->db->update('orders', $data);
     }
+
+    public function removeOrder($id) {
+        $this->db->where('id', $id);
+        return $this->db->delete('orders');
+    }
+
+    public function getCountOrdersWithStatus() {
+        $result = $this->db->query('CALL `getCountOrdersWithStatus`();');
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+    public function getEarningOverview()
+    {
+        $result = $this->db->query('CALL `getEarningOverview`();');
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+    public function getEarningAnalyse() {
+        $result = $this->db->query('CALL `getEarningAnalyse`();');
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+    public function getEarningOfYear($year) {
+        $result = $this->db->query("CALL `getEarningOfYear`('". $year ."');");
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+
 }
