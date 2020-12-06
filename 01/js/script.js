@@ -1,5 +1,9 @@
 var isOpenCart = false;
 
+function openSearchBar() {
+
+}
+
 function openNav() {
     document.getElementById("miniCart").style.right = "0px";
     // document.getElementById("navi-top").style.top = "-80px";
@@ -35,6 +39,7 @@ function hideBackground() {
 $(document).ready(function() {
     $("#fadeBackground").click(function() {
         closeNav();
+        hideSearch();
     });
 });
 
@@ -61,6 +66,31 @@ $(document).ready(function() {
     });
 });
 
+function hideNav() {
+    document.getElementById("navi-top").style.top = "-80px";
+
+}
+
+function showNav() {
+    document.getElementById("navi-top").style.top = "0px";
+}
+
+function showSearch() {
+    hideNav();
+    $('.search-bar').css('top', '0');
+    $('.search-bar').css('opacity', '1');
+    $('body').addClass('disableScroll');
+    fadeBackground();
+    $('#inputFocus').focus();
+}
+
+function hideSearch() {
+    $('.search-bar').css('top', '-' + $('.search-bar').css('height'));
+    $('.search-bar').css('opacity', '0');
+    $('body').removeClass('disableScroll');
+    setTimeout(showNav(), 5000);
+    hideBackground();
+}
 // focus scroll
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {

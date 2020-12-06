@@ -17,8 +17,7 @@ var shoppingCart = (function() {
         this.count = count;
         this.image = image;
         this.salePrice = Math.round(
-            ((this.price * (1 - this.discount)) / 100) * 100
-        );
+            ((this.price * (1 - this.discount)) * 100)) / 100;
     }
 
     // Save cart
@@ -145,19 +144,22 @@ var shoppingCart = (function() {
 // Triggers / Events
 // *****************************************
 // Add item
-$(".add-to-cart").click(function(event) {
-    event.preventDefault();
-    var id = $(this).data("id");
-    var name = $(this).data("name");
-    var price = Number($(this).data("price"));
-    var image = $(this).data("image");
-    var discount = Number($(this).data("discount"));
-    if (id != null && name != null && price != null && image != null) {
-        counterAddToCart(id);
-        shoppingCart.addItemToCart(id, name, price, discount, 1, image);
-    }
-    displayCart();
-});
+$(document).on('click', '.add-to-cart', function(event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var name = $(this).data("name");
+        var price = Number($(this).data("price"));
+        var image = $(this).data("image");
+        var discount = Number($(this).data("discount"));
+        if (id != null && name != null && price != null && image != null) {
+            counterAddToCart(id);
+            shoppingCart.addItemToCart(id, name, price, discount, 1, image);
+        }
+        displayCart();
+    })
+    // $(".add-to-cart").click(function(event) {
+
+// });
 
 // Clear items
 $(".clear-cart").click(function() {
@@ -247,7 +249,7 @@ displayCart();
 function displayOverview() {}
 
 // goto detail
-$(".product-card").on("click", ".go-to-detail-product", function(event) {
+$(document).on("click", ".go-to-detail-product", function() {
     const id = $(this).data("id");
     console.log(id);
 

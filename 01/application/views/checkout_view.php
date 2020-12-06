@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <head>
     <title>Elite</title>
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>img/elite-favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>/img/svg/shortcuticon.svg" />
     <!-- --------------------------------------------------------------- -->
     <!-- font -->
     <!-- -------------------------------------------------------------- -->
@@ -48,11 +48,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="containerac mt-5">
 
                             <ul class="progress-indicator">
-                                <li class="completed">
+                                <li class="warning">
                                     <span class="bubble"></span>
                                     Sign in
                                 </li>
-                                <li class="completed">
+                                <li class="warning">
                                     <span class="bubble"></span>
                                     Shipping & Payment
                                 </li>
@@ -153,7 +153,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </form>
                         </div>
                         <!-- end form group payemnt -->
-                        <button id="btnSubmitCheckout" class="col-12 btn btn-dark rounded-0" style="height:50px">Checkout</input>
+                        
                     </div>
                     <!-- end left content -->
 
@@ -205,7 +205,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                 </div>
                 <!-- end row -->
-
+                <div class="row">
+                <button id="btnSubmitCheckout" class="col-6 offset-3 btn btn-dark rounded-0" style="height:50px">Checkout</input>
+                </div>
             </div>
             <!-- end main container -->
 
@@ -374,8 +376,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 var timeline = [];
                 timeline.push({
                     time: today,
-                    status: 'Order Success'
+                    status_id: 1,
+                    status: 'Order Placed'
                 });
+                var tracking = [];
+                tracking.push({
+                    time: today,
+                    status_id: 1,
+                    status: 'Order Placed'
+                })
 
                 shipping_address = JSON.parse(userProfile.shipping_address);
                 array = shipping_address.array;
@@ -398,6 +407,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         idCustomer: id,
                         timeline: JSON.stringify(timeline),
                         productList: JSON.stringify(cartArray),
+                        tracking: JSON.stringify(tracking),
                         shipping_address: JSON.stringify(array[idx]),
                         shipping_option_id: 1,
                     },
@@ -413,12 +423,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function loadStatus(status) {
             if (status.status == 'complete') {
-                htmll =
-                    '<div class="container"><div class="justify-content-center text-center"><a href="<?php echo base_url(); ?>index.php/home"><img style="height:100px" class="svg-icon-image" src="<?php echo base_url(); ?>img/svg/logo.svg"alt="logo"></a><h1>Order Success</h1><h6 class="custom-font-1-bold mb-0" id="order-id">Your Order Has Been Placed With ID: <a href="">' +
-                    status.id + '</a></h6></div></div><div class="border-bottom mt-5"></div>';
-                $('#mainBody').html(htmll);
                 shoppingCart.clearCart();
                 localStorage.removeItem('shipping_address');
+                htmll =
+                    '<div class="container"><div class="justify-content-center text-center"><a href="<?php echo base_url(); ?>index.php/home"><img style="height:100px" class="svg-icon-image" src="<?php echo base_url(); ?>img/svg/logo-light.svg"alt="logo"></a><h1>Order Successfully</h1><h6 class="custom-font-1-bold mb-0" id="order-id">Your Order Has Been Placed With ID: <a href="<?php echo base_url(); ?>/index.php/customer/order/view?id=' +
+                    +status.id + '">' +
+                    status.id +
+                    '</a></h6></div></div><div class="border-bottom mt-5"></div>';
+                // $('#mainBody').html(htmll);
+                window.location.href = "<?php echo base_url(); ?>index.php/checkout/done?id=" + status.id;
+                // $(w.document.body).html(htmll);
+                
             } else if (status.status == 'error') {
                 $('#error-content').html(status.alert);
                 $('#modalError').modal('show');

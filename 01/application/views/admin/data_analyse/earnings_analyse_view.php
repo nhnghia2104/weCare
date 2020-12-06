@@ -90,7 +90,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -110,10 +110,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -128,9 +131,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- Nav Item - analyse -->
 
             <!-- analyse Earning -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
@@ -347,56 +350,57 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+                <div>
+                    <div class="container p-0">
+                        <!-- Content Row -->
 
-                <div class="container p-0">
-                    <!-- Content Row -->
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card rounded-0">
-                                <div class="card-body">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 border-bottom mb-4">
-                                                <p class="custom-font-5-bold text-gray-700">Overview</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3 col-12 border-right">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <p class="text-orange custom-font-6-bold">Will be Paid &nbsp<i class="fad fa-badge-dollar"></i></p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <p class="custom-font-1-bold text-gray-700 mb-0">Total</p>
-                                                        <p class="will-paid custom-font-6-bold text-gray-800">$0</p>
-                                                    </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card rounded-0">
+                                    <div class="card-body">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-12 border-bottom mb-4">
+                                                    <p class="custom-font-5-bold text-gray-700">Overview</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-9 col-12 pl-md-5">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <p class="text-success custom-font-6-bold">Paid &nbsp<i class="fad fa-money-check-alt"></i></p>
+                                            <div class="row">
+                                                <div class="col-md-3 col-12 border-right">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="text-orange custom-font-6-bold">Will be Paid &nbsp<i class="fad fa-badge-dollar"></i></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="custom-font-1-bold text-gray-700 mb-0">Total</p>
+                                                            <p class="will-paid custom-font-6-bold text-gray-800">$0</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <p class="custom-font-1-bold text-gray-700 mb-0">Today</p>
-                                                        <p class="today-paid custom-font-6-bold text-gray-800">$0</p>
+                                                <div class="col-md-9 col-12 pl-md-5">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="text-success custom-font-6-bold">Paid &nbsp<i class="fad fa-money-check-alt"></i></p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-3">
-                                                        <p class="custom-font-1-bold text-gray-700 mb-0">This Week</p>
-                                                        <p class="this-week custom-font-6-bold text-gray-800">$0</p>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <p class="custom-font-1-bold text-gray-700 mb-0">This Month</p>
-                                                        <p class="this-month custom-font-6-bold text-gray-800">$0</p>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <p class="custom-font-1-bold text-gray-700 mb-0">Total</p>
-                                                        <p class="total-paid custom-font-6-bold text-gray-800">$0</p>
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <p class="custom-font-1-bold text-gray-700 mb-0">Today</p>
+                                                            <p class="today-paid custom-font-6-bold text-gray-800">$0</p>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p class="custom-font-1-bold text-gray-700 mb-0">This Week</p>
+                                                            <p class="this-week custom-font-6-bold text-gray-800">$0</p>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p class="custom-font-1-bold text-gray-700 mb-0">This Month</p>
+                                                            <p class="this-month custom-font-6-bold text-gray-800">$0</p>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <p class="custom-font-1-bold text-gray-700 mb-0">Total</p>
+                                                            <p class="total-paid custom-font-6-bold text-gray-800">$0</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -404,110 +408,110 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> <!-- end row -->
+                        </div> <!-- end row -->
 
-                </div> <!-- end container -->
+                    </div> <!-- end container -->
 
-                <!-- container table -->
-                <div class="container p-0 mt-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card rounded-0">
-                                <div class="card-header bg-white p-0">
+                    <!-- container table -->
+                    <div class="container p-0 mt-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card rounded-0">
+                                    <div class="card-header bg-white p-0">
 
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <!-- Tabs -->
-                                            <section id="tabs">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="col-xs-12">
-                                                            <nav>
-                                                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                                                    <a class="nav-item nav-link active tab-element" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" data-filter="unpaid" aria-selected="true">Will be Paid</a>
-                                                                    <a class="nav-item nav-link tab-element" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" data-filter="paid" aria-selected="false">Paid</a>
-                                                                </div>
-                                                            </nav>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body custom-font-3">
-                                    <div>
-                                        <div hidden class="date-pick container p-0 ml-0 mr-0 mb-3">
-                                            <div class="row ml-0">
-                                                <form class="custome-datepicker">
-                                                    <fieldset>
-                                                        <div class="control-group">
-                                                            <div class="controls">
-                                                                <div class="input-prepend input-group">
-                                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control custom-font-3" value="" />
-                                                                </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- Tabs -->
+                                                <section id="tabs">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <nav>
+                                                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                                        <a class="nav-item nav-link active tab-element" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" data-filter="unpaid" aria-selected="true">Will be Paid</a>
+                                                                        <a class="nav-item nav-link tab-element" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" data-filter="paid" aria-selected="false">Paid</a>
+                                                                    </div>
+                                                                </nav>
                                                             </div>
                                                         </div>
-                                                    </fieldset>
-                                                </form>
+                                                    </div>
+                                                </section>
                                             </div>
                                         </div>
-                                        <table class="table" id="tableOrder" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID Order</th>
-                                                    <th>Customer</th>
-                                                    <th>Date Created</th>
-                                                    <th>Date of payment</th>
-                                                    <th>Status</th>
-                                                    <th>Total</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody class="text-capitalize" id="tableBodyContent">
-
-                                            </tbody>
-                                        </table> <!-- end table -->
-                                    </div> <!-- end table-responsive -->
-                                </div> <!-- end card body -->
-
-                            </div><!-- end card -->
-                        </div> <!-- end col -->
-                    </div> <!-- end row -->
-                </div> <!-- end table contentner -->
-
-                <!-- container chart -->
-                <div class="container p-0 mt-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card rounded-0">
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="container-fluid">
-                                        <div class="col-12">
-                                            <div class="row  border-bottom mb-4">
-                                                <div class="col-12 col-sm-4">
-                                                    <div class="input-group mb-3">
-                                                        <input id="applyYear" type="text" class="form-control" placeholder="Year" value="2020">
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-orange" type="button" id="btnApplyYear">Apply</button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-
+                                    </div>
+                                    <div class="card-body custom-font-3">
+                                        <div>
+                                            <div hidden class="date-pick container p-0 ml-0 mr-0 mb-3">
+                                                <div class="row ml-0">
+                                                    <form class="custome-datepicker">
+                                                        <fieldset>
+                                                            <div class="control-group">
+                                                                <div class="controls">
+                                                                    <div class="input-prepend input-group">
+                                                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control custom-font-3" value="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </form>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <p hidden class="invalid-data text-muted">
-                                                        Invalid data
-                                                    </p>
-                                                    <div class="chart-bar">
-                                                        <canvas id="myBarChart"></canvas>
+                                            <table class="table" id="tableOrder" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID Order</th>
+                                                        <th>Customer</th>
+                                                        <th>Date Created</th>
+                                                        <th>Date of payment</th>
+                                                        <th>Status</th>
+                                                        <th>Total</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody class="text-capitalize" id="tableBodyContent">
+
+                                                </tbody>
+                                            </table> <!-- end table -->
+                                        </div> <!-- end table-responsive -->
+                                    </div> <!-- end card body -->
+
+                                </div><!-- end card -->
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                    </div> <!-- end table contentner -->
+
+                    <!-- container chart -->
+                    <div class="container p-0 mt-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card rounded-0">
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="container-fluid">
+                                            <div class="col-12">
+                                                <div class="row  border-bottom mb-4">
+                                                    <div class="col-12 col-sm-4">
+                                                        <div class="input-group mb-3">
+                                                            <input id="applyYear" type="text" class="form-control" placeholder="Year" value="2020">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-orange" type="button" id="btnApplyYear">Apply</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p hidden class="invalid-data text-muted">
+                                                            Invalid data
+                                                        </p>
+                                                        <div class="chart-bar">
+                                                            <canvas id="myBarChart"></canvas>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -517,10 +521,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </div>
                         </div>
                     </div>
+                    <!-- end container chart -->
+
                 </div>
-                <!-- end container chart -->
-
-
             </div><!-- end main content -->
 
 
@@ -752,7 +755,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             oTable.clear();
             for (var index = 0; index < array.length; index++) {
                 oTable.row.add([
-                    '<a class="order-id" href="<?php echo base_url(); ?>index.php/admin/ordersmanage/detail/' + array[index].id + '">' + array[index].id + '</a>',
+                    '<a class="order-id" href="<?php echo base_url(); ?>index.php/admin/ordersmanage/detail?id=' + array[index].id + '">' + array[index].id + '</a>',
 
                     array[index].fullName,
                     array[index].createAt,

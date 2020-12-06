@@ -67,6 +67,37 @@ class ProductManage extends CI_Controller
 		$this->load->view('admin/editProduct_view', $data, FALSE);
 	}
 
+	public function info($id)
+	{
+		// $this->load->view('admin/editProduct_view');
+		// echo $id;
+		$this->load->model('Product_model');
+
+		$dataCategory = $this->Product_model->getCategory();
+
+		$dataProduct = $this->Product_model->getProductByID($id);
+
+		$data = array(
+			'dataProduct' => $dataProduct,
+			'dataCategory' => $dataCategory
+		);
+
+		// echo "<pre>";
+		// var_dump($data);
+
+		$this->load->view('admin/product_info_view', $data, FALSE);
+	}
+
+	public function getProductInfo() {
+		$id = $_POST['id'];
+		$this->load->model('Product_model');
+
+		$dataProduct = $this->Product_model->getProductByID($id);
+
+		echo json_encode($dataProduct);
+	}
+
+
 	public function deleteProduct($id)
 	{
 		$this->load->model('Product_model');
@@ -80,6 +111,7 @@ class ProductManage extends CI_Controller
 	public function updateProduct()
 	{
 		$id = $this->input->post('id');
+		// echo $id;
 
 		$name = $this->input->post('product-name');
 
@@ -236,7 +268,9 @@ class ProductManage extends CI_Controller
 		date_default_timezone_set('Asia/Bangkok');
 		$dateCreated = date('Y-m-d H:i:s');
 
-		if ($name == '' || $category == 0 || $price == '' || $uploadOk == 0 || $style == 0 || $inventory < 0) {
+		echo 'cate' . $category;
+
+		if ($name == '' || $category == 0 || $price == '' || $uploadOk == 0 || $inventory < 0) {
 			echo "failed";
 		} else {
 			$this->load->model('Product_model');
@@ -284,15 +318,14 @@ class ProductManage extends CI_Controller
 	{
 
 		$idProduct = $this->input->post('idProduct');
-		$displayName = $this->input->post('displayName');
+		$idCustomer = $this->input->post('idCustomer');
 		$vote = $this->input->post('vote');
 		$head = $this->input->post('head');
 		$content = $this->input->post('content');
-		date_default_timezone_set('Asia/Bangkok');
-		$date = date('Y-m-d H:i:s');
+		$date = $this->input->post('date');
 
 		$this->load->model('Product_model');
-		if ($this->Product_model->insertReview($idProduct, $date, $displayName, $vote, $head, $content) > 0) {
+		if ($this->Product_model->insertReview($idProduct, $date, $idCustomer, $vote, $head, $content) > 0) {
 			$send = array('status' => 'complete', 'id' => $idProduct);
 			$send = json_encode($send);
 			echo $send;
@@ -334,6 +367,29 @@ class ProductManage extends CI_Controller
 	{
 		$this->load->model('Product_model');
 		$data = $this->Product_model->getBestSellerProduct();
+		$data = json_encode($data);
+		echo $data;
+	}
+
+	public function getTopPopularProductActive() {
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getTopPopularProductActive();
+		$data = json_encode($data);
+		echo $data;
+	}
+
+	public function getTopSalingProductActive()
+	{
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getTopSalingProductActive();
+		$data = json_encode($data);
+		echo $data;
+	}
+	
+	public function getAllSalingProductActive()
+	{
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getAllSalingProductActive();
 		$data = json_encode($data);
 		echo $data;
 	}

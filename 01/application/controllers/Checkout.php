@@ -102,6 +102,11 @@ class Checkout extends CI_Controller {
 		$this->load->view('shipping_view');
 	}
 
+	public function done()
+	{
+		$this->load->view('checkout_done_view');
+	}
+
 	
 }
  

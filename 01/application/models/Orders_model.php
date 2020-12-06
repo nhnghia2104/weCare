@@ -10,7 +10,7 @@ class Orders_model extends CI_Model {
         parent::__construct();
     }
 
-    public function insertOrders($id, $createAt, $total, $idPayment, $status ,$paid, $payDate, $note, $idCustomer, $timeline, $shipping_address, $shipping_option_id) {
+    public function insertOrders($id, $createAt, $total, $idPayment, $status ,$paid, $payDate, $note, $idCustomer, $timeline, $shipping_address, $shipping_option_id, $tracking) {
 		$data = array ( 
             'id' => $id,
             'createAt' => $createAt,
@@ -23,7 +23,8 @@ class Orders_model extends CI_Model {
 			'idCustomer' => $idCustomer,
             'timeline' => $timeline,
             'shipping_address' => $shipping_address,
-            'shipping_option_id' => $shipping_option_id
+            'shipping_option_id' => $shipping_option_id,
+            'tracking' => $tracking
         );
         return $this->db->insert('orders', $data);
 	}
@@ -72,12 +73,13 @@ class Orders_model extends CI_Model {
         return $result;
     }
 
-    public function updateOrder($id, $paid, $status, $payDate,$timeline) {
+    public function updateOrder($id, $paid, $status, $payDate,$timeline,$tracking) {
         $data = array (
             'status' => $status,
             'paid' => $paid,
             'payDate' => $payDate,
-            'timeline' => $timeline
+            'timeline' => $timeline,
+            'tracking' => $tracking,
         );
 
         $this->db->where('id', $id);

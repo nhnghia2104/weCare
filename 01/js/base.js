@@ -14,10 +14,50 @@ function dateFormat(str) {
     );
 }
 
+function dateFormatFull(str) {
+    var date = new Date(str);
+    return (
+        date.getFullYear() +
+        "/" +
+        ("00" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        ("00" + date.getDate()).slice(-2) +
+        " " +
+        ("00" + date.getHours()).slice(-2) +
+        ":" +
+        ("00" + date.getMinutes()).slice(-2) +
+        ":" +
+        ("00" + date.getSeconds()).slice(-2)
+    );
+}
+
 function dateFormatHard(str) {
     var date = new Date(str);
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return date.toLocaleDateString("en-US", options);
+}
+
+function dateOnlyFormat(str) {
+    var date = new Date(str);
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString("en-US", options);
+}
+
+function timeOnlyFormat(str) {
+    var date = new Date(str);
+    return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+}
+
+function dateFormatShort(str) {
+    var date = new Date(str);
+    // return curr_hour + ":" + curr_minute + "" +curr_date + "/" + curr_month + "/" + curr_year;
+    return (
+        date.getFullYear() +
+        "/" +
+        ("00" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        ("00" + date.getDate()).slice(-2)
+    );
 }
 
 function newDateForDB() {

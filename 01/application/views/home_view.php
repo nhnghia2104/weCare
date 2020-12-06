@@ -25,6 +25,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body>
+
+    <div id="place-search">
+
+    </div>
+
     <div class="top custom-font-4" style="background-image: url(<?php echo base_url(); ?>img/pet.png);">
         <!-- <div class="overlay"></div> -->
         <nav class="navbar fixed-top navbar-expand-md topbar navbar-light shadow" id="navi-top">
@@ -32,7 +37,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-top" aria-controls="menu-top" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="home">
+                <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/home">
                     <img class="navbar_logo" data-light="<?php echo base_url(); ?>img/svg/logo-light.svg" data-dark="<?php echo base_url(); ?>img/svg/logo.svg" src="<?php echo base_url(); ?>img/svg/logo-light.svg" alt="logo" height="70px" color="white">
                 </a>
                 <div class="collapse navbar-collapse" id="menu-top">
@@ -46,13 +51,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </div>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link  home-navbar-button" href="#">About us</a>
+                            <a class="nav-link  home-navbar-button" href="<?php echo base_url(); ?>index.php/welcome">About us</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link  home-navbar-button" href="#">Contact us</a>
+                            <a class="nav-link  home-navbar-button" href="welcome">Contact us</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav mt-2 mt-lg-0 menu-top-element">
+                        <li class="nav-item active">
+                            <a onclick="showSearch()" class="nav-link btn-search home-navbar-button">Search &nbsp<i class="fal fa-search"></i></a>
+                        </li>
+
                         <li class="nav-item active signin_info dropdown no-arrow">
                             <a class="nav-link btn-signin home-navbar-button" href="#signModal" data-toggle="modal">Sign in &nbsp<i class="fal fa-user"></i></a>
                         </li>
@@ -71,18 +80,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="banner">
             <div class="container">
                 <div class="row">
-                    <!-- <div class="col-md-10 offset-md-1 text-center">
-                        <h1>
-                            LIVE FOR GREATENESS
-                        </h1>
-                        <p id="banner-content">
-                            Greatness is within everyone. Passion, drive, inspiration greatness is a journey that never
-                            end.
+                    <div class="col-md-10 text-left custom-font-5 mt-5 text-info">
+                        <h1 class="custom-font-6-bold">A house is not a home without a pet</h1>
+                        <p class="custom-font-1">
+                            They are not our whole life, but they make our lives whole.
                         </p>
-                        <a href="shop" class="btn btn-outline-light" style="text-transform: uppercase;">
-                            Discover now
-                        </a>
-                    </div> -->
+                        <div class="row p-0 m-0">
+                            <a href="#" class="btn btn-pink border-0 rounded-pill mr-3">About us</a>
+                            <a href="#" class="btn btn-pink border-0 rounded-pill">Contact us</a>
+                        </div>
+
+                    </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
         </div> <!-- end banner -->
@@ -144,181 +152,61 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- fade background -->
     <div id="fadeBackground" class="fjXvoO"></div>
 
-    <div class="about-us mt-5 mb-5">
+    <!-- top popular -->
+    <div class="bg-gray-100 pt-3 pb-3 mb-4">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <span class="story-logo">
-                        <img class="svg-icon-image" src="<?php echo base_url(); ?>img/svg/logo-light.svg" alt="logo">
-                    </span>
-                    <h3>
-                        THE STORY OF TNTM
-                    </h3>
-                    <p>
-                        At the end of 2020, 4 students who were passionate about Wathes decided to start TNTM.
-                        <br>TNTM
-                        was
-                        found
-                        with a mission "Bring an inspiration, a change of mindset, a change of thought and what we call
-                        young
-                        experience".
-                    </p>
+            <div class="row text-left">
+                <div class="col-12">
+                    <p class="custom-font-6-bold text-info mb-0">Our Top Seller</p>
+                    <a href="shop">
+                        <p class="custom-font-4 mb-0 text-info">Shop now <i class="fal fa-long-arrow-right"></i></p>
+                    </a>
                 </div>
-            </div> <!-- end row -->
-            <picture>
-                <img src="<?php echo base_url(); ?>img/why-not-background-01.png" alt="" width="100%">
-            </picture>
-        </div> <!-- end container -->
-    </div> <!-- end about us -->
-
-    <div class="our-product">
-        <div class="our-product-title mb-5 text-center" style="width: 100%;">
-            <h2>
-                MEN'S BEST SELLERS
-            </h2>
-            <a href="#">
-                MORE <i class="fal fa-long-arrow-right"></i>
-            </a>
+            </div>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="row data-popular">
+
+        </div>
+    </div>
+
+    <!-- saling -->
+    <div class="container-saling">
+        <div class="bg-gray-100 pt-3 pb-3 mb-4">
+            <div class="container">
+                <div class="row text-left">
+                    <div class="col-12">
+                        <p class="custom-font-6-bold text-info mb-0">On Saling</p>
+                        <a href="shop/sale">
+                            <p class="custom-font-4 mb-0 text-info">Shop now <i class="fal fa-long-arrow-right"></i></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/motar.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="cus-btn from-center mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/motar.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/motar.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/motar.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="row data-saling">
 
             </div>
         </div>
     </div>
 
-    <div class="our-product">
-        <div class="our-product-title mb-5 text-center" style="width: 100%;">
-            <h2>
-                WOMAN'S BEST SELLERS
-            </h2>
-            <a href="#">
-                MORE <i class="fal fa-long-arrow-right"></i>
-            </a>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center">
+                <!-- <div style="hei"></div> -->
+                <img class="card-avt border rounded-circle" width="400px" height="400px" src="<?php echo base_url(); ?>img/Webp.net-resizeimage.jpg" alt="">
+            </div>
+            <div class="col-12 col-md-6 text-center">
+                <img class="card-avt border rounded-circle" width="400px" height="400px" src="<?php echo base_url(); ?>img/pexels-photo-38867.jpeg" alt="">
+            </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/charm.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/charm.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/charm.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3 mb-3 product-card">
-                    <div class="card pt-2 text-center">
-                        <a href="#">
-                            <img class="card-img" src="<?php echo base_url(); ?>img/watch/charm.webp" alt="Vans">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
-                            <p class="card-text">
-                                $21.04 </p>
-                            <a href="#" class="btn btn-outline-dark mt-3 button-add-to-cart"><i class="fal fa-shopping-cart"></i> Add to
-                                Cart</a>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="row text-center mb-5 mt-5">
+            <div class="col-12 custom-font-6-bold">
+                <a href="#" class="btn btn-explore border-0 rounded-pill mr-3">Explore Our Collection</a>
             </div>
         </div>
     </div>
@@ -426,7 +314,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <p class="hint-text"><a href="#">Forgot Password?</a></p>
                     </form>
                 </div>
-                <div class="modal-footer">Don't have an account? <a href="#">Create one</a></div>
+                <div class="modal-footer">Don't have an account? <a href="<?php echo base_url(); ?>index.php/signup">Create one</a></div>
             </div>
         </div>
     </div>
@@ -445,10 +333,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <script type="text/javascript" src="<?php echo base_url(); ?>js/shop.js"></script>
 
-    
+
     <script type="text/javascript" src="<?php echo base_url(); ?>js/user.js"></script>
 
     <script>
+        // place search
+        $('#place-search').load('<?php echo base_url(); ?>html/search_bar.html');
         href = '';
         checkToken();
 
@@ -464,32 +354,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     },
                     success: function(dataReturned) {
                         if (dataReturned.length > 0) {
-                            displayInfo(dataReturned[0]);
+                            displayInfoUser(dataReturned[0]);
                         }
                     }
                 });
             }
         }
 
-        function displayInfo(info) {
-            if (info != '') {
-                $('.signin_info').html('<a class="nav-link dropdown-toggle home-navbar-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, ' + info.firstName + ' &nbsp<i class="fal fa-user-check"></i></a>');
-                $('.signin_info').append($('<div class="dropdown-menu need-hover-drop rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">' +
-                    '<a class="dropdown-item custom-font-4 account_" href="#">Account</a>' +
-                    '<a class="dropdown-item custom-font-4 orders_" href="customer/orders">Orders</a>' +
-                    '<div class="dropdown-divider"></div>' +
-                    '<a class="dropdown-item custom-font-4 signout_" href="#">Sign out</a>' +
-                    '</div>'));
-                $('.signin_info').on('mouseover', function() {
-                    fadeBackground();
-                }).on('mouseout', function() {
-                    hideBackground();
-                })
-                $('.signin_info').on('click', '.signout_', function() {
-                    signOut();
-                })
-            }
-        }
         $('.sign_in').click(function() {
             user = $('#user').val();
             pass = $('#pass').val();
@@ -545,6 +416,70 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     '<a class="dropdown-item custom-font-4" data-id="' + info[i].ID + '" href="shop?src=' + info[i].DisplayName + '">' + info[i].DisplayName + '</a>'
             }
             $('#dropdownCategory').html(output);
+        }
+    </script>
+
+    <!-- data product -->
+    <script>
+        // top seller
+        $.ajax({
+            type: "GET",
+            url: '<?php echo base_url(); ?>index.php/admin/ProductManage/getTopPopularProductActive',
+            dataType: 'json',
+            success: function(response) {
+                var html = template(response);
+                $('.data-popular').html(html);
+            }
+        });
+
+        // saling
+        $.ajax({
+            type: "GET",
+            url: '<?php echo base_url(); ?>index.php/admin/ProductManage/getTopSalingProductActive',
+            dataType: 'json',
+            success: function(response) {
+                if (response.length > 0) {
+                    var html = template(response);
+                    $('.data-saling').html(html);
+                } else {
+                    $('.container-saling').attr('hidden', 'hidden');
+                }
+
+            }
+        });
+
+        function template(data) {
+            html = '';
+            // data = sortData(data, defaultSorted);
+            for (i = 0; i < data.length; i++) {
+                const salePrice = Math.round(((data[i].Price * (1 - data[i].discount)) * 100)) / 100;
+                html += '<div class="col-6 col-md-6 col-lg-3 mb-3 product-card">' +
+                    '<div class="card text-center">' +
+                    '<div ' + (data[i].discount > 0 ? '' : 'hidden') + ' class="position-absolute sale-tag" id="sale-tag-' + i + '">-' + data[i].discount * 100 + '%' + '</div>' +
+                    '<a class="go-to-detail-product" id="link-' + i + '"' +
+                    'href="<?php echo base_url(); ?>index.php/product/' + data[i].ID + '" ' +
+                    'data-id="' + data[i].ID + '" ' +
+                    '>' +
+                    '<img class="img-responsive card-img card-img-custom p-3" src="' + data[i].Image + '"></a>' +
+                    '<div class="card-body">' +
+                    '<h5 id="style-' + i + '" class="card-text text-uppercase custom-font-weight-light custom-font-3 text-black-50 mb-1"></h5>' +
+                    '<h4 id="name-' + i + '" class="card-title">' + data[i].Name + '</h4>' +
+                    '<p id="sale-price-' + i + '" class="custom-font-weight-bold mb-0">' + (data[i].discount > 0 ? '$' + salePrice : '$' + data[i].Price) + '</p>' +
+                    '<p id="original-price-' + i + '" class="custom-font-weight-light text-dec-line">' + (data[i].discount > 0 ? '$' + data[i].Price : '') + '</p>' +
+                    '</div>' +
+                    '<a id="data-add-to-cart-' + i + '" class="add-to-cart mt-3 rounded-0 button-add-to-cart"' +
+                    'data-id="' + data[i].ID + '" ' +
+                    'data-name="' + data[i].Name + '" ' +
+                    'data-image="' + data[i].Image + '" ' +
+                    'data-price="' + data[i].Price + '" ' +
+                    'data-discount="' + data[i].discount + '" ' +
+                    '>' +
+                    '<i class="fal fa-shopping-cart"></i> Add to Cart' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>';
+            }
+            return html;
         }
     </script>
 

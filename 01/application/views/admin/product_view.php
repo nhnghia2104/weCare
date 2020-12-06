@@ -77,13 +77,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <!-- Nav Item - Product manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
                     <i class="fal fa-shopping-bag"></i>
                     <span> Product</span>
                 </a>
-                <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseProduct" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/productmanage">All
+                        <a class="collapse-item active" href="<?php echo base_url(); ?>index.php/admin/productmanage">All
                             products</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/productmanage/addproduct">Add new product</a>
                     </div>
@@ -94,7 +94,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -114,10 +114,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -134,7 +137,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- analyse Earning -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
@@ -365,7 +368,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <button class="btn btn-white rounded-0 dropdown-toggle mr-1 pr-5" type="button" id="dropdownCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 All Category
                                             </button>
-                                            <div id="product-category" class="dropdown-menu" aria-labelledby="dropdownCategory">
+                                            <div id="product-category-2" class="dropdown-menu" aria-labelledby="dropdownCategory">
                                                 <a class="dropdown-item" href="#">All Category</a>
                                             </div>
                                         </div>
@@ -402,8 +405,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                         stock</a>
                                                                     <a class="nav-item nav-link tab-element" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" data-filter="outstock" aria-selected="false">Out of
                                                                         stock</a>
-                                                                    <a class="nav-item nav-link tab-element" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" data-filter="active" aria-selected="false">Active</a>
-                                                                    <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="inactive" aria-selected="false">Inactive</a>
+                                                                    <a class="nav-item nav-link tab-element" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" data-filter="published" aria-selected="false">Published</a>
+                                                                    <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="unpublished" aria-selected="false">Unpublished</a>
                                                                     <a class="nav-item nav-link tab-element" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" data-filter="sale" aria-selected="false">Sale</a>
                                                                 </div>
                                                             </nav>
@@ -425,6 +428,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                                         <div class="modal-dialog modal-lg custom-font-1" role="document">
                                             <form method="post" enctype="multipart/form-data" action="insertProduct">
+                                            <input hidden name="product-idAdmin" id="product-idAdmin" type="text" value="admin1">
+                                            <input hidden name="product-detail" id="product-detail" type="text" value="">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h6 class="modal-title" id="exampleModalCenterTitle">Add new product
@@ -569,8 +574,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     <th>Price</th>
                                                     <th>Sale</th>
                                                     <th>Stock</th>
-                                                    <th>Time Created</th>
-                                                    <th>Active</th>
+                                                    <th>Published</th>
                                                     <th></th>
                                                     <!-- <th>Salary</th> -->
                                                 </tr>
@@ -694,7 +698,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         url: '<?php echo base_url(); ?>index.php/admin/productmanage/requestCategory',
                         dataType: 'json',
                         success: function(data) {
-                            solveCategory(data);
+                            solveAddCategory(data);
                         }
                     });
                     $.ajax({
@@ -710,16 +714,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
             });
         });
         // add Category to Select Form 
-        function solveCategory(data) {
-            var selectForm = document.getElementById('product-category');
-            var n = data['category'].length;
-            var element = data['category'];
-            for (var i = 0; i < n; i++) {
-                var opt = document.createElement('option');
-                opt.value = i + 1;
-                opt.innerHTML = element[i]['DisplayName'];
-                selectForm.appendChild(opt);
+        function solveAddCategory(data) {
+            html = '<option>Choose</option>';
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="'+ data[i].ID +'">' + data[i].DisplayName + '</option>';
             }
+            $('#product-category').html(html);
         }
         // add Style to select form
         function solveStyles(array) {
@@ -753,8 +753,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
             "paging" : true,
             columnDefs: [{
                 orderable: false,
-                targets: 8
-            }],
+                targets: 7
+            },
+            { width: 100, targets: 0 },
+            // { width: 300, targets: 1 },
+            { width: 60, targets: [2,3,4,5] },
+            { width: 60, targets: 6 },
+            { width: 80, targets: 7 }],
         });
         filterValue = "all";
         
@@ -779,19 +784,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
         function displayTable(products) {
             for (var index = 0; index < products.length; index++) {
                 oTable.row.add([
-                    '<img src="' + products[index].Image + '" alt="image" style="height:60px;">',
+                    '<img src="' + products[index].Image + '" alt="image" width="100%">',
                     products[index].Name,
                     products[index].Category,
                     '$' + products[index].Price,
                     Number(products[index].discount) * 100 + '%',
                     products[index].inventory,
-                    dateFormat(products[index].dateCreated),
                     (products[index].status == '1' ?
-                        '<span class="switch switch-sm"><input name="product-status" type="checkbox" class="switch" id="switch-status_' + products[index].ID + '" data-id="' + products[index].ID + '" value="1" checked><label id="statusLabel_' + products[index].ID + '" for="switch-status_' + products[index].ID + '" style="color: #449D44;"> Active</label>' :
-                        '<span class="switch switch-sm"><input name="product-status" type="checkbox" class="switch" id="switch-status_' + products[index].ID + '" data-id="' + products[index].ID + '" value="0"><label id="statusLabel_' + products[index].ID + '" for="switch-status_' + products[index].ID + '" style="color: #6e707e;"> Active</label>'),
+                        '<span class="switch switch-sm"><input name="product-status" type="checkbox" class="switch sw_val" id="switch-status_' + products[index].ID + '" data-id="' + products[index].ID + '" value="1" checked><label id="statusLabel_' + products[index].ID + '" for="switch-status_' + products[index].ID + '" style="color: #449D44;">Published</label>' :
+                        '<span class="switch switch-sm"><input name="product-status" type="checkbox" class="switch sw_val" id="switch-status_' + products[index].ID + '" data-id="' + products[index].ID + '" value="0"><label id="statusLabel_' + products[index].ID + '" for="switch-status_' + products[index].ID + '" style="color: #6e707e;">Unpublished</label>'),
                     '<div>' +
                     '<a class="btn btn-light btn-sm mb-1"' +
-                    'href="<?php echo base_url(); ?>index.php/admin/Productmanage/editProduct/' + products[index]
+                    'href="<?php echo base_url(); ?>index.php/admin/productmanage/info/' + products[index]
                     .ID +
                     '">' +
                     '<i class="fal fa-sliders-v"></i></a>' +
@@ -809,6 +813,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         $('#dataTable tbody').on('change', '.switch', function() {
             status = $(this).val();
             $(this).prop('value', status == 1 ? 0 : 1);
+            $('#statusLabel_' + $(this).data('id')).html(status == 1 ? 'Unpublished' : 'Published')
             $('#statusLabel_' + $(this).data('id')).css('color', status == 1 ? '#6e707e' : '#449D44');
             if ($(this).data('id') != '' && $(this).val() != '' && $(this).data('id') != undefined && $(this).val() != undefined) {
                 // console.log( $(this).data('id'));
@@ -844,7 +849,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             function(oSettings, aData, iDataIndex) {
                 filter = false;
                 category = false;
-
+                
                 switch (filterValue) {
                     case "all":
                         filter = true;
@@ -859,13 +864,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             filter = true;
                         }
                         break;
-                    case "active":
-                        if (aData[6].toLowerCase() == "active") {
+                    case "published":
+                        
+                        if (aData[6].toLowerCase() == 'published') {
                             filter = true;
                         }
                         break;
-                    case "inactive":
-                        if (aData[6].toLowerCase() == "inactive") {
+                    case "unpublished":
+                        console.log(filterValue);
+                        console.log(aData[6].toLowerCase());
+                        if (aData[6].toLowerCase() == "unpublished") {
                             filter = true;
                         }
                         break;
@@ -909,14 +917,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
         });
 
         function solveCategory(data) {
-            var selectForm = document.getElementById('product-category');
+            var selectForm = document.getElementById('product-category-2');
             var n = data.length;
             var element = data;
             htmlInner = '<a class="dropdown-item text-capitalize dropdown-cate" data-filter="All Category" href="#">All Category</a>';
             for (var i = 0; i < n; i++) {
                 htmlInner += '<a class="dropdown-item text-capitalize dropdown-cate" data-filter="' + element[i]['DisplayName'] + '" href="#">' + element[i]['DisplayName'] + '</a>';
             }
-            $('#product-category').html(htmlInner);
+            $('#product-category-2').html(htmlInner);
         }
     </script>
 

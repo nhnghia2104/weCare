@@ -16,7 +16,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Style -->
     <!-- --------------------------------------------------------------------------- -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/queries.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/sb-admin-2.min.css">
 
 
@@ -168,7 +167,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="d-flex float-right justify-content-center align-items-center">
+                                        <div class="float-right justify-content-center align-items-center">
                                             <?php if ($dataProduct[0]['discount'] > 0) {
                                                 echo "<h4 class='custom-font-2 custom-font-weight-light text-dec-line text-right text-uppercase'>$";
                                                 echo $dataProduct[0]['Price'];
@@ -203,9 +202,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                         <!-- free ship info -->
                         <div class="reviews mt-4">
-                            <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Free return</p>
+                            <!-- <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Free return</p> -->
                             <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Free ship for all</p>
-                            <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Two years warranty</p>
+                            <!-- <p><i class="fas fa-square-full"></i>&nbsp;&nbsp;Two years warranty</p> -->
                         </div>
                     </section>
                 </div>
@@ -297,7 +296,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <section>
                 <div class="container mt-5">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-lg-5 col-12 mb-4">
                             <div class="row">
                                 <h6 class="custom-font-2-bold">Customer Reviews</h6>
                             </div>
@@ -329,7 +328,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <i class="fas fa-star" aria-hidden="true"></i>
                                         </div>
                                         <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
-                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-info rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <div class="numVote">0</div>
                                     </div>
@@ -343,7 +342,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <i class='fal fa-star'></i>
                                         </div>
                                         <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
-                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-info rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <div class="numVote">0</div>
                                     </div>
@@ -357,7 +356,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <i class='fal fa-star'></i>
                                         </div>
                                         <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
-                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
+                                            <div class="progress-bar bg-info rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
                                         </div>
                                         <div class="numVote">0%</div>
                                     </div>
@@ -371,7 +370,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <i class='fal fa-star'></i>
                                         </div>
                                         <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
-                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
+                                            <div class="progress-bar bg-info rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
                                         </div>
                                         <div class="numVote">0%</div>
                                     </div>
@@ -385,105 +384,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <i class='fal fa-star'></i>
                                         </div>
                                         <div class="progress ml-3 mr-3 mt-1" style="width: 120px; height:8px">
-                                            <div class="progress-bar bg-secondary rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
+                                            <div class="progress-bar bg-info rounded-right" role="progressbar" style="width: 0%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="0"></div>
                                         </div>
                                         <div class="numVote">0%</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-lg-7 col-12">
                             <div class="container">
                                 <div class="row">
-                                    <h6 class="custom-font-1-bold">Review this product</h6>
+                                    <div class="col-sm-12">
+                                        <div class="review-block">
 
-                                </div>
-                                <div class="row">
-                                    <p class="custom-font-3 mb-2">Share your thoughts with other customers</p>
-                                </div>
-                                <div class="row">
-                                    <a class="btn btn-sm btn-warning rounded-0 pl-4 pr-4" href="#">Write a customer
-                                        review</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="container">
-                    <hr />
+                <div hidden class="container writeReview_block">
                     <div class="row">
-                        <div class="col-sm-9">
-
-                            <div class="review-block">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <!-- <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image"
-                                            class="img-rounded"> -->
-                                        <div style="width:60px;height:60px" class="review-avt bg-gray-700 text-white text-center rounded-circle">
-                                            A
-                                        </div>
-                                        <div class="review-block-name">
-                                            <p class="custom-font-1">nktailor</p>
-                                        </div>
-                                        <div class="review-block-date">January 29, 2016<br /></div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <div class="review-block-rate text-warning">
-                                            <i class="fas fa-star" aria-hidden="true"></i>
-                                            <i class="fas fa-star" aria-hidden="true"></i>
-                                            <i class="fas fa-star" aria-hidden="true"></i>
-                                            <i class='fal fa-star'></i>
-                                            <i class='fal fa-star'></i>
-                                        </div>
-                                        <div class="review-block-title">this was nice in buy</div>
-                                        <div class="review-block-description">this was nice in buy. this was nice in
-                                            buy. this was nice in buy. this was nice in buy this was nice in buy this
-                                            was nice in buy this was nice in buy this was nice in buy</div>
-                                    </div>
-                                </div>
-                                <hr />
-                            </div>
+                        <div class="col-12 text-center">
+                            <div class="border-bottom mb-3 mt-3"></div>
+                            <h6 class="custom-font-1-bold">Review this product</h6>
+                            <p class="custom-font-3 mb-2">Share your thoughts with other customers</p>
+                            <button class="btn btn-sm btn-warning rounded-0 pl-4 pr-4 btn_writeReview">Write a customer
+                                review</button>
                         </div>
                     </div>
                 </div>
 
-                <form>
-                    <div class="form-group row">
-                        <label class="col-form-label text-uppercase custom-font-5-bold">Send your reviews</label>
-                    </div>
-                    <div class="form-group row custom-font-1-bold">
-                        <label for="inputPassword" class="col-md-3 col-form-label mb-1 p-0">1. Your display name</label>
-                        <div class="col-sm-10 p-0">
-                            <input id="review-name" type="text" class="form-control rounded-0">
-                        </div>
-                    </div>
-                    <div class="form-group row custom-font-1-bold">
-                        <label class="col-form-label mr-3">2. Your rating: </label>
-                        <div class="rating-input pt-2 text-warning">
-                            <i class="fal fa-star" data-value="1"></i>
-                            <i class="fal fa-star" data-value="2"></i>
-                            <i class="fal fa-star" data-value="3"></i>
-                            <i class='fal fa-star' data-value="4"></i>
-                            <i class='fal fa-star' data-value="5"></i>
-                        </div>
-                        <input id="review-rate" type="number" hidden class="form-control rounded-0">
-                    </div>
-                    <div class="form-group row custom-font-1-bold">
-                        <label for="inputPassword" class="col-md-3 mb-1 col-form-label p-0">3. Title</label>
-                        <div class="col-sm-10 p-0">
-                            <input id="review-head" type="text" class="form-control rounded-0">
-                        </div>
-                    </div>
-                    <div class="form-group row custom-font-1-bold">
-                        <label for="inputPassword" class="col-md-3 mb-1 col-form-label p-0">4. Your reviews</label>
-                        <div class="col-sm-10 p-0">
-                            <textarea id="review-content" type="text" class="form-control rounded-0" rows="5" placeholder="Input your reviews here"></textarea>
-                        </div>
-                    </div>
-
-                    <a href="#" id='btn-sendreview' class="row btn btn-sm pt-2 pb-2 pl-5 pr-5 btn-warning rounded-0">SEND YOUR REVIEW</a>
-                </form>
             </section>
         </div>
     </div>
@@ -626,8 +559,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </footer>
 
-     <!-- Modal Signin -->
-     <div id="signModal" class="modal fade">
+    <!-- Modal Signin -->
+    <div id="signModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered modal-login">
             <div class="modal-content">
                 <div class="modal-header">
@@ -655,6 +588,50 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </form>
                 </div>
                 <div class="modal-footer">Don't have an account? <a href="#">Create one</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal review -->
+    <div class="modal fade" id="modalReview" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="col-form-label text-uppercase custom-font-5-bold">Send your reviews</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pb-4">
+                    <div class="container">
+                        <form>
+                            <div class="form-group row custom-font-1-bold">
+                                <label class="col-form-label mr-3">1. Your rating: </label>
+                                <div class="rating-input pt-2 text-warning">
+                                    <i class="fal fa-star" data-value="1"></i>
+                                    <i class="fal fa-star" data-value="2"></i>
+                                    <i class="fal fa-star" data-value="3"></i>
+                                    <i class='fal fa-star' data-value="4"></i>
+                                    <i class='fal fa-star' data-value="5"></i>
+                                </div>
+                                <input id="review-rate" type="number" hidden class="form-control rounded-0">
+                            </div>
+                            <div class="form-group row custom-font-1-bold">
+                                <label for="inputPassword" class="mb-1 col-form-label p-0">2. Title</label>
+                                <div class="col-sm-12 p-0">
+                                    <input id="review-head" type="text" class="form-control rounded-0">
+                                </div>
+                            </div>
+                            <div class="form-group row custom-font-1-bold">
+                                <label for="inputPassword" class="mb-1 col-form-label p-0">3. Your reviews</label>
+                                <div class="col-sm-12 p-0">
+                                    <textarea id="review-content" type="text" class="form-control rounded-0" rows="5" placeholder="Input your reviews here"></textarea>
+                                </div>
+                            </div>
+                            <a href="#" id='btn-sendreview' class="row btn btn-sm pt-2 pb-2 pl-5 pr-5 btn-warning rounded-0">SEND YOUR REVIEW</a>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -749,28 +726,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function displayFeedback(data) {
             if (data.length == 0) {
-                $('.review-block').html("");
+                $('.review-block').attr('hidden','hidden');
             } else {
                 htmlOut = '';
                 for (index = 0; index < data.length; index++) {
-                    htmlOut += '<div class="row"><div class="col-sm-3">';
+                    date = new Date().setTime(data[index].date);
+                    htmlOut += '<div class="row"><div class="col-sm-4">';
                     if (data[index].avatar != '') {
                         htmlOut +=
                             '<img style="width:60px;height:60px" height="60px" src="' + data[index].avatar +
-                            '" class="img-rounded border rounded-circle ml-2">'
+                            '" class="img-rounded border rounded-circle">'
                     } else {
                         avt = data[index].name.charAt(0);
                         htmlOut +=
-                            '<div style="width:60px;height:60px" class="review-avt bg-gray-700 ml-2 text-white text-center rounded-circle">' +
+                            '<div style="width:60px;height:60px" class="review-avt bg-gray-700 text-white text-center rounded-circle">' +
                             avt + '</div>';
                     }
 
                     htmlOut +=
                         '<div class="review-block-name text-capitalize"><p class="custom-font-3-bold mb-0">' + data[index]
                         .name +
-                        '</p></div>' + '<div class="review-block-date">' + dateLongFormat(data[index].date) +
+                        '</p></div>' + '<div class="review-block-date">' + dateLongFormat(date) +
                         '<br /></div></div>' +
-                        '<div class="col-sm-9"><div class="review-block-rate text-warning">';
+                        '<div class="col-sm-8"><div class="review-block-rate text-warning">';
                     for (var i = 1; i <= 5; i++) {
                         htmlOut += (i <= data[index].vote) ? "<i class='fas fa-star'></i>" :
                             "<i class='fal fa-star'></i>";
@@ -824,10 +802,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 dataType: 'json',
                 data: {
                     idProduct: '<?php echo  $dataProduct[0]['ID'] ?>',
-                    displayName: $('#review-name').val(),
+                    idCustomer: loadToken().customer_id,
                     vote: $('#review-rate').val(),
                     head: $('#review-head').val(),
-                    content: $('#review-content').val()
+                    content: $('#review-content').val(),
+                    date: Date.now()
                 },
                 success: function(data) {
                     if (data.status == 'complete') {
@@ -837,11 +816,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 }
             });
         })
+
+        $('.btn_writeReview').click(function() {
+            $('#modalReview').modal('show');
+        })
     </script>
 
     <script>
         function displayDetailContent() {
-            json = JSON.parse('<?php echo $dataProduct[0]['details'] ?>');
+            json = '';
 
             if (json != null) {
                 innerhtml = "";
@@ -861,85 +844,85 @@ defined('BASEPATH') or exit('No direct script access allowed');
         displayDetailContent();
     </script>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>js/user.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/user.js"></script>
 
-<script>
-    href = '';
-    checkToken();
+    <script>
+        href = '';
+        checkToken();
 
-    function checkToken() {
-        token_access = loadToken();
-        if (token_access != '') {
-            $.ajax({
-                type: "POST",
-                url: '<?php echo base_url(); ?>index.php/admin/UserManage/getInfoToken',
-                dataType: 'json',
-                data: {
-                    token: token_access.token,
-                },
-                success: function(dataReturned) {
-                    if (dataReturned.length > 0) {
-                        displayInfo(dataReturned[0]);
+        function checkToken() {
+            token_access = loadToken();
+            if (token_access != '') {
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo base_url(); ?>index.php/admin/UserManage/getInfoToken',
+                    dataType: 'json',
+                    data: {
+                        token: token_access.token,
+                    },
+                    success: function(dataReturned) {
+                        if (dataReturned.length > 0) {
+                            displayInfo(dataReturned[0]);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
-    }
 
-    function displayInfo(info) {
-        if (info != '') {
-            $('.signin_info').html('<a class="nav-link dropdown-toggle home-navbar-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, ' + info.firstName + ' &nbsp<i class="fal fa-user-check"></i></a>');
-            $('.signin_info').append($('<div class="dropdown-menu need-hover-drop rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">' +
-                '<a class="dropdown-item custom-font-4 account_" href="#">Account</a>' +
-                '<a class="dropdown-item custom-font-4 orders_" href="#">Orders</a>' +
-                '<div class="dropdown-divider"></div>' +
-                '<a class="dropdown-item custom-font-4 signout_" href="#">Sign out</a>' +
-                '</div>'));
-            $('.signin_info').on('mouseover', function() {
-                fadeBackground();
-            }).on('mouseout', function() {
-                hideBackground();
-            })
-            $('.signin_info').on('click', '.signout_', function() {
-                signOut();
-            })
+        function displayInfo(info) {
+            if (info != '') {
+                $('.signin_info').html('<a class="nav-link dropdown-toggle home-navbar-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, ' + info.firstName + ' &nbsp<i class="fal fa-user-check"></i></a>');
+                $('.signin_info').append($('<div class="dropdown-menu need-hover-drop rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">' +
+                    '<a class="dropdown-item custom-font-4 account_" href="#">Account</a>' +
+                    '<a class="dropdown-item custom-font-4 orders_" href="#">Orders</a>' +
+                    '<div class="dropdown-divider"></div>' +
+                    '<a class="dropdown-item custom-font-4 signout_" href="#">Sign out</a>' +
+                    '</div>'));
+                $('.signin_info').on('mouseover', function() {
+                    fadeBackground();
+                }).on('mouseout', function() {
+                    hideBackground();
+                })
+                $('.signin_info').on('click', '.signout_', function() {
+                    signOut();
+                })
+            }
         }
-    }
-    $('.sign_in').click(function() {
-        user = $('#user').val();
-        pass = $('#pass').val();
-        if (user != '' && pass != '') {
-            $.ajax({
-                type: "POST",
-                url: '<?php echo base_url(); ?>index.php/admin/UserManage/signin',
-                dataType: 'json',
-                data: {
-                    username: user,
-                    password: pass,
-                },
-                success: function(return_) {
-                    saveToken(return_);
-                    window.location.reload();
-                }
-            });
-        }
-    });
+        $('.sign_in').click(function() {
+            user = $('#user').val();
+            pass = $('#pass').val();
+            if (user != '' && pass != '') {
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo base_url(); ?>index.php/admin/UserManage/signin',
+                    dataType: 'json',
+                    data: {
+                        username: user,
+                        password: pass,
+                    },
+                    success: function(return_) {
+                        saveToken(return_);
+                        window.location.reload();
+                    }
+                });
+            }
+        });
 
-    $('#btn-checkout').click(function() {
-        if (loadToken() != '') {
-            window.location.href = '<?php echo base_url(); ?>index.php/checkout';
-        } else {
-            href = '<?php echo base_url(); ?>index.php/checkout';
-            closeNav();
-            $('.btn-signin').trigger('click');
-        }
-    })
-    $('.shop_category').on('mouseover', function() {
-        fadeBackground();
-    }).on('mouseout', function() {
-        hideBackground();
-    })
-</script>
+        $('#btn-checkout').click(function() {
+            if (loadToken() != '') {
+                window.location.href = '<?php echo base_url(); ?>index.php/checkout';
+            } else {
+                href = '<?php echo base_url(); ?>index.php/checkout';
+                closeNav();
+                $('.btn-signin').trigger('click');
+            }
+        })
+        $('.shop_category').on('mouseover', function() {
+            fadeBackground();
+        }).on('mouseout', function() {
+            hideBackground();
+        })
+    </script>
 
     <!-- category -->
     <script>
@@ -959,7 +942,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     '<a class="dropdown-item custom-font-4" data-id="' + info[i].ID + '" href="shop?src=' + info[i].DisplayName + '">' + info[i].DisplayName + '</a>'
             }
             $('#dropdownCategory').html(output);
-            
+
             sth = parseURLParams(window.location.search);
             $('.category_display').html(sth != null ? sth.src[0].toUpperCase() : 'All Category'.toUpperCase());
         }

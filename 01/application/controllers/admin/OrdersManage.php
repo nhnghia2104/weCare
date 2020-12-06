@@ -44,13 +44,14 @@ class OrdersManage extends CI_Controller {
 		$data = $_POST['productList'];
 		$shipping_address = $_POST['shipping_address'];
 		$shipping_option_id = $_POST['shipping_option_id'];
+		$tracking =  $_POST['tracking'];
 
 		$data = json_decode($data, true);
 
 		$complete = 1;
 
 		$this->load->model('Orders_model');
-		if ($this->Orders_model->insertOrders($id, $createAt, $total, $idPayment, $status ,$paid, $payDate, $note, $idCustomer, $timeline, $shipping_address,$shipping_option_id) > 0) {}
+		if ($this->Orders_model->insertOrders($id, $createAt, $total, $idPayment, $status ,$paid, $payDate, $note, $idCustomer, $timeline, $shipping_address,$shipping_option_id,$tracking) > 0) {}
 		else {
 			$complete = 0;
 		}
@@ -136,12 +137,13 @@ class OrdersManage extends CI_Controller {
 		$paid = $_POST['paid'];
 		$payDate = $_POST['payDate'];
 		$timeline = $_POST['timeline'];
+		$tracking = $_POST['tracking'];
 
 		if ($status == '4') {
 			$paid = 1;
 		}
 		$this->load->model('Orders_model');
-		if ($this->Orders_model-> updateOrder($id, $paid, $status, $payDate, $timeline) > 0) {
+		if ($this->Orders_model-> updateOrder($id, $paid, $status, $payDate, $timeline,$tracking) > 0) {
 			$url = array( 'url' => base_url() .'index.php/admin/ordersmanage');
 			$url = json_encode($url);
 			echo $url;

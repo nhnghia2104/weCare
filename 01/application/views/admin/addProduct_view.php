@@ -71,15 +71,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <!-- Nav Item - Product manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
                     <i class="fal fa-shopping-bag"></i>
                     <span> Product</span>
                 </a>
-                <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseProduct" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/productmanage">All
                             products</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/productmanage/addproduct">Add new product</a>
+                        <a class="collapse-item active" href="<?php echo base_url(); ?>index.php/admin/productmanage/addproduct">Add new product</a>
                     </div>
                 </div>
             </li>
@@ -88,7 +88,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -108,10 +108,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -128,7 +131,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- analyse Earning -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
@@ -350,11 +353,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                 <!-- Begin Page Content -->
 
-                <div class="container mt-5">
+                <div class="container-fluid mt-5">
 
                     <div class="ml-md-5 mr-md-5 mb-5">
                         <form id="form-target" method="post" enctype="multipart/form-data" action="insertProduct">
-                            <div class="modal-content">
+                            <div class="modal-content rounded-0 shadow-sm border-0">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="exampleModalCenterTitle">Add new product
                                     </h6>
@@ -497,7 +500,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <!-- end modal body -->
                                 <div class="modal-footer">
                                     <!-- <input class="stupidButton hidden" type="submit" value="Save"> -->
-                                    <a href="#" class="btn-save btn btn-dark">Save</a>
+                                    <a href="#" class="btn-save btn btn-info rounded-0 pl-4 pr-4">Save</a>
                                 </div>
                             </div> <!-- end modal content -->
                         </form><!-- end form -->
@@ -705,12 +708,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function solveCategory(data) {
             var selectForm = document.getElementById('product-category');
-            var n = data['category'].length;
-            var element = data['category'];
-            for (var i = 0; i < n; i++) {
+            console.log(data);
+
+            for (var i = 0; i < data.length; i++) {
                 var opt = document.createElement('option');
                 opt.value = i + 1;
-                opt.innerHTML = element[i]['DisplayName'];
+                opt.innerHTML = data[i]['DisplayName'];
                 selectForm.appendChild(opt);
             }
         }
@@ -718,7 +721,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         function displayStyle(array) {
             for (var index = 0; index < array.length; index++) {
                 const element = array[index];
-                $('#product-style').append('<option value="' + element.id + '">' + element.DisplayName + '</option>');
+                $('#product-style').append('<option value="' + element.id + '"' + (element.id == 0 ? 'selected' : '') + '>' + element.DisplayName + '</option>');
             }
         }
         requestStyleOptions();

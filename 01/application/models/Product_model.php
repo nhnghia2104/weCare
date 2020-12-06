@@ -10,7 +10,7 @@ class Product_model extends CI_Model {
         parent::__construct();
     }
 
-    public function insertProduct($id, $name, $category ,$description, $price, $image,$status=1,$discount=0,$style,$inventory, $detail, $idAdmin, $dateCreated)
+    public function insertProduct($id, $name, $category ,$description, $price, $image,$status=0,$discount=0,$style,$inventory, $detail, $idAdmin, $dateCreated)
     {
         $data = array ( 
             'ID' => $id,
@@ -124,11 +124,11 @@ class Product_model extends CI_Model {
         // var_dump($result);
         return $result;
     }
-    public function insertReview($idProduct, $date, $displayName, $vote, $head, $content) {
+    public function insertReview($idProduct, $date, $idCustomer, $vote, $head, $content) {
         $data = array ( 
             'idProduct' => $idProduct,
             'date' => $date,
-            'displayName ' => $displayName,
+            'idCustomer ' => $idCustomer,
             'vote' => $vote,
             'head' => $head,
             'content' => $content,
@@ -180,6 +180,31 @@ class Product_model extends CI_Model {
         return $result;
     }
 
+    public function getTopPopularProductActive()
+    {
+        $result = $this->db->query("CALL `getTopPopularProductActive`();");
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+    public function getTopSalingProductActive()
+    {
+        $result = $this->db->query("CALL `getTopSalingProductActive`();");
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+    public function getAllSalingProductActive() {
+        $result = $this->db->query("CALL `getAllSalingProductActive`();");
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
     
 
     public function getAnalyseListProductPaid() {
@@ -202,6 +227,15 @@ class Product_model extends CI_Model {
     public function getEarningsOfProduct($id)
     {
         $result = $this->db->query("CALL `getEarningsOfProduct`('".$id."');");
+        $result = $result->result_array();
+        // echo "<pre>";
+        // var_dump($result);
+        return $result;
+    }
+
+    public function searchActiveProduct($key)
+    {
+        $result = $this->db->query("CALL `searchActiveProduct`('%".$key."%');");
         $result = $result->result_array();
         // echo "<pre>";
         // var_dump($result);

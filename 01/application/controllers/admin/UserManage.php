@@ -6,14 +6,31 @@ class UserManage extends CI_Controller
 	public function index()
 	{
 
-		$this->load->view('admin/customer_view');
+		$this->load->view('admin/customer/customer_view');
 		// $this->load->view('admin/addSuccess_View');
 	}
 
 	public function info()
 	{
-		$this->load->view('admin/customer_info_view');
+		$this->load->view('admin/customer/customer_info_view');
 	}
+
+	public function userBought()
+	{
+		$this->load->view('admin/customer/customer_bought_view');
+	}
+
+	public function userOrdered()
+	{
+		$this->load->view('admin/customer/customer_ordered_view');
+	}
+
+	public function userFeedback()
+	{
+		$this->load->view('admin/customer/customer_feedback_view');
+	}
+
+
 
 	public function getListCustomers()
 	{
@@ -28,6 +45,15 @@ class UserManage extends CI_Controller
 		$id =  (isset($_POST['id'])) ? $_POST['id'] : '';
 		$this->load->model('User_model');
 		$data = $this->User_model->getDetailCustomer($id);
+		$data = json_encode($data);
+		echo $data;
+	}
+
+	public function listOrder()
+	{
+		$id =  (isset($_POST['id'])) ? $_POST['id'] : '';
+		$this->load->model('User_model');
+		$data = $this->User_model->listOrder($id);
 		$data = json_encode($data);
 		echo $data;
 	}
@@ -70,13 +96,10 @@ class UserManage extends CI_Controller
 			$this->load->model('User_model');
 			if ($this->User_model->updateShipping_Address($id, $value) > 0) {
 				echo 'success';
-			}
-			else {
+			} else {
 				echo 'error';
 			}
-		
-		}
-		else {
+		} else {
 			echo 'error';
 		}
 	}
@@ -88,6 +111,7 @@ class UserManage extends CI_Controller
 		// echo $username;
 		$this->load->model('User_model');
 		$info = $this->User_model->checkAccount($username, $password);
+		
 		if ($info != null) {
 			$idCustomer = $info[0]['idCustomer'];
 			$id = uniqid();
@@ -96,9 +120,8 @@ class UserManage extends CI_Controller
 			$created = date('Y-m-d H:i:s');
 			$done = $this->User_model->generateToken($id, $idCustomer, $token, $created);
 			if ($done != null) {
-				echo json_encode(array('token' => $token,'customer_id' => $idCustomer));
-			}
-			else {
+				echo json_encode(array('token' => $token, 'customer_id' => $idCustomer));
+			} else {
 				echo 'create token failed';
 			}
 		} else {
@@ -106,7 +129,28 @@ class UserManage extends CI_Controller
 		}
 	}
 
-	public function getInfoToken() {
+	public function updatePassword()
+	{
+		$id =  (isset($_POST['id'])) ? $_POST['id'] : '';
+		$password =  (isset($_POST['password'])) ? $_POST['password'] : '';
+		$newPassword =  (isset($_POST['newPass'])) ? $_POST['newPass'] : '';
+
+		$this->load->model('User_model');
+		$info = $this->User_model->checkPassword($id, $password);
+
+		if ($info != null) {
+			if ($this->User_model->updatePassword($id, $newPassword) != null) {
+				echo json_encode(array('status' => 'success'));
+			} else {
+				echo json_encode(array('status' => 'fail'));
+			}
+		} else {
+			echo json_encode(array('status' => 'fail'));
+		}
+	}
+
+	public function getInfoToken()
+	{
 		$token =  (isset($_POST['token'])) ? $_POST['token'] : '';
 		$this->load->model('User_model');
 		$data = $this->User_model->getInfoToken($token);
@@ -114,5 +158,12 @@ class UserManage extends CI_Controller
 		echo $data;
 	}
 
-
+	public function listCustomerBought()
+	{
+		$id =  (isset($_POST['id'])) ? $_POST['id'] : '';
+		$this->load->model('User_model');
+		$data = $this->User_model->listCustomerBought($id);
+		$data = json_encode($data);
+		echo $data;
+	}
 }

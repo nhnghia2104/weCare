@@ -23,6 +23,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body>
+    <div id="place-search">
+
+    </div>
+
     <div class="top custom-font-4" style="height: 75vh !important ;background-image: url(<?php echo base_url(); ?>img/cat.jpg);">
         <!-- <div class="overlay"></div> -->
         <nav class="navbar fixed-top navbar-expand-md topbar navbar-light shadow" id="navi-top">
@@ -149,7 +153,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="dropdown mt-4">
         <div class="container text-center">
             <div class="row">
-            <div class="col-12 col-sm-3">
+                <div class="col-12 col-sm-3">
                     <p class="category_display custom-font-6-bold text-info">
                         All Category
                     </p>
@@ -168,7 +172,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -408,8 +412,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         array = array.sort((a, b) => b.view - a.view);
         for (let index = 0; index < array.length; index++) {
             const element = array[index];
-            const salePrice = Math.round(((parseFloat(element.Price) * (1 - parseFloat(element.discount))) / 100) * 100);
-
+            const salePrice = Math.round(((element.Price * (1 - element.discount)) * 100)) / 100;
             $('#style-' + index).html(element.style);
             $('#name-' + index).html(element.Name);
             $('#link-' + index).attr("data-id", element.ID);
@@ -456,32 +459,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     },
                     success: function(dataReturned) {
                         if (dataReturned.length > 0) {
-                            displayInfo(dataReturned[0]);
+                            displayInfoUser(dataReturned[0]);
                         }
                     }
                 });
             }
         }
 
-        function displayInfo(info) {
-            if (info != '') {
-                $('.signin_info').html('<a class="nav-link dropdown-toggle home-navbar-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, ' + info.firstName + ' &nbsp<i class="fal fa-user-check"></i></a>');
-                $('.signin_info').append($('<div class="dropdown-menu need-hover-drop rounded-0 border-0 shadow" aria-labelledby="navbarDropdown">' +
-                    '<a class="dropdown-item custom-font-4 account_" href="#">Account</a>' +
-                    '<a class="dropdown-item custom-font-4 orders_" href="#">Orders</a>' +
-                    '<div class="dropdown-divider"></div>' +
-                    '<a class="dropdown-item custom-font-4 signout_" href="#">Sign out</a>' +
-                    '</div>'));
-                $('.signin_info').on('mouseover', function() {
-                    fadeBackground();
-                }).on('mouseout', function() {
-                    hideBackground();
-                })
-                $('.signin_info').on('click', '.signout_', function() {
-                    signOut();
-                })
-            }
-        }
         $('.sign_in').click(function() {
             user = $('#user').val();
             pass = $('#pass').val();
@@ -536,10 +520,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     '<a class="dropdown-item custom-font-4" data-id="' + info[i].ID + '" href="shop?src=' + info[i].DisplayName + '">' + info[i].DisplayName + '</a>'
             }
             $('#dropdownCategory').html(output);
-            
+
             sth = parseURLParams(window.location.search);
             $('.category_display').html(sth != null ? sth.src[0].toUpperCase() : 'All Category'.toUpperCase());
         }
+    </script>
+    <!-- load search  -->
+    <script>
+        $('#place-search').load('<?php echo base_url(); ?>html/search_bar.html');
     </script>
 
 </body>

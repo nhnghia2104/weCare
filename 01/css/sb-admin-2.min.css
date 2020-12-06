@@ -2649,15 +2649,15 @@ fieldset:disabled a.btn {
 
 .btn-info:hover {
     color: #fff;
-    background-color: #2c9faf;
-    border-color: #2a96a5
+    background-color: #006399;
+    border-color: #006399
 }
 
 .btn-info.focus,
 .btn-info:focus {
     color: #fff;
-    background-color: #2c9faf;
-    border-color: #2a96a5;
+    background-color: #006399;
+    border-color: #006399;
     box-shadow: 0 0 0 .2rem rgba(84, 196, 212, .5)
 }
 
@@ -2672,8 +2672,8 @@ fieldset:disabled a.btn {
 .btn-info:not(:disabled):not(.disabled):active,
 .show>.btn-info.dropdown-toggle {
     color: #fff;
-    background-color: #2a96a5;
-    border-color: #278c9b
+    background-color: #006399;
+    border-color: #006399
 }
 
 .btn-info:not(:disabled):not(.disabled).active:focus,
@@ -2813,31 +2813,31 @@ fieldset:disabled a.btn {
 
 .btn-dark:hover {
     color: #fff;
-    background-color: #484a54;
-    border-color: #42444e
+    background-color: #333333;
+    border-color: #333333
 }
 
 .btn-dark.focus,
 .btn-dark:focus {
     color: #fff;
-    background-color: #484a54;
-    border-color: #42444e;
+    background-color: #333333;
+    border-color: #333333;
     box-shadow: 0 0 0 .2rem rgba(115, 116, 128, .5)
 }
 
 .btn-dark.disabled,
 .btn-dark:disabled {
     color: #fff;
-    background-color: #5a5c69;
-    border-color: #5a5c69
+    background-color: #333333;
+    border-color: #333333
 }
 
 .btn-dark:not(:disabled):not(.disabled).active,
 .btn-dark:not(:disabled):not(.disabled):active,
 .show>.btn-dark.dropdown-toggle {
     color: #fff;
-    background-color: #42444e;
-    border-color: #3d3e47
+    background-color: #333333;
+    border-color: #333333;
 }
 
 .btn-dark:not(:disabled):not(.disabled).active:focus,
@@ -9952,7 +9952,7 @@ a.text-success:hover {
 
 a.text-info:focus,
 a.text-info:hover {
-    color: #258391!important
+    color: #006399!important
 }
 
 .text-warning {
@@ -10748,7 +10748,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item.active {
-    color: #4e73df;
+    /* color: #4e73df; */
     font-weight: 700
 }
 

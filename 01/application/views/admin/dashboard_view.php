@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -105,10 +105,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -125,7 +128,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- analyse Earning -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
@@ -159,7 +162,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow-sm">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -249,16 +252,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <h6 id="earning-header" class="m-0 font-weight-bold text-primary">Earnings Overview
                                     </h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle custom-font-1-bold" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="dropdown-toggle custom-font-1-bold" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse" role="button">
                                             More <i class="far fa-angle-right"></i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- Card Body -->
@@ -281,9 +277,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </a>
                                     </div>
                                 </div>
+
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="card text-center border-0">
+                                        <div hidden class="position-absolute sale-tag">
+                                            -20%
+                                        </div>
                                         <a class="go-to-detail-product" id="product-a">
                                             <img class="img-responsive card-img p-3" src="">
                                         </a>
@@ -444,9 +444,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $('#product-name').html(ele.name);
 
                     if (Number(ele.discount) > 0) {
-                        $('#price-cur').html("$" + (1 - Number(ele.discount)) * Number(ele.Price));
-                        $('#discountt').html('-' + Number(ele.discount) * 100 + '%');
+                        $('#price-cur').html("$" + Math.round((1 - ele.discount) * ele.Price * 100) / 100 + ' ');
+                        // $('#discountt').html('-' + Number(ele.discount) * 100 + '%');
                         $('#price-old').html("$" + ele.Price);
+
+                        $('.sale-tag').html("-" + ele.discount * 100 + "%");
+                        $('.sale-tag').removeAttr('hidden');
                     }
                 }
             }

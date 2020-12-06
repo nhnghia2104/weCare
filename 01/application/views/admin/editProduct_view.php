@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="<?php echo base_url(); ?>index.php/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -105,10 +105,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -125,7 +128,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- analyse Earning -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
@@ -452,7 +455,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                                                         } else {
                                                                                             echo 'style="color: #6e707e;"';
                                                                                         } ?>>
-                                                Active
+                                                Published
                                             </label>
                                         </span>
                                     </div>
@@ -489,7 +492,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <label class="col-12 col-form-label custom-font-weight-bold">*
                                                 Inventory</label>
                                             <div class="input-group mb-3 col-12">
-                                                <input id="product-inventory" name="product-inventory" type="number" step="0.01" class="form-control border-0" aria-label="Amount (to the nearest dollar)" placeholder="" value="<?= $dataProduct[0]['inventory'] ?>">
+                                                <input id="product-inventory" name="product-inventory" type="number" step="1" class="form-control border-0" aria-label="Amount (to the nearest dollar)" placeholder="" value="<?= $dataProduct[0]['inventory'] ?>">
 
                                             </div>
                                         </div><!-- end input Inventory -->

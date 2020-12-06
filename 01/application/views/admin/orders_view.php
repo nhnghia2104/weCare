@@ -89,13 +89,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <!-- Nav Item - Order manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
-                <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOrder" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage">All
+                        <a class="collapse-item active" href="<?php echo base_url(); ?>index.php/admin/ordersmanage">All
                             Orders</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage?filter=unsolved">Unsolved</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage?filter=refunded">Refunded</a>
@@ -111,10 +111,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -131,7 +134,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- analyse Earning -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
@@ -353,7 +356,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="card shadow mb-4">
+                    <div class="card rounded-0 shadow mb-4">
                         <div class="card-header bg-white p-0">
 
                             <div class="row">
@@ -362,7 +365,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <section id="tabs">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-xs-12">
+                                                <div class="">
                                                     <nav>
                                                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                                             <a class="nav-item nav-link active tab-element" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" data-filter="all" aria-selected="true">All</a>

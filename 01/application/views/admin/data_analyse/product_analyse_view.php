@@ -91,7 +91,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
                 <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -111,10 +111,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -131,20 +134,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- analyse Earning -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/earnings_analyse">
-                    <i class="fal fa-dollar-sign"></i>
+                    <i class="fal fa-sack-dollar"></i>
                     <span> Earnings</span>
                 </a>
             </li>
 
             <!-- analyse product -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductAnalyse" aria-expanded="true" aria-controls="collapseProductAnalyse">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseProductAnalyse" aria-expanded="true" aria-controls="collapseProductAnalyse">
                     <i class="fal fa-box-usd"></i>
                     <span> Products Analyse</span>
                 </a>
-                <div id="collapseProductAnalyse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseProductAnalyse" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/products_overview">Overview</a>
+                        <a class="collapse-item active" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/products_overview">Overview</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/dataanalyse/products_performance">Product Analyse</a>
                     </div>
                 </div>
@@ -725,7 +728,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function displayTable(products) {
             oTable.clear();
-            for (var index = 0; index < 10; index++) {
+            console.log(products);
+            for (var index = 0; index < 10 && index < products.length; index++) {
                 col = 0;
                 rate = 0;
                 switch (filterValue) {
@@ -735,7 +739,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         console.log(rate);
                         break;
                     case "earnings":
-                        col = roundNumber(products[index].earnings);
+                        col = '$' + roundNumber(products[index].earnings);
                         rate = products[index].earnings / totalEarning;
                         break;
                     case "sold":
@@ -752,7 +756,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 oTable.row.add([
                     index + 1,
                     '<div class="d-flex"><img class="border rounded-circle border-light" height="50px" src="' + products[index].Image + '" alt="">' +
-                    '<div class="d-block mt-2 ml-2 text-uppercase"><a class="product-id" data-id="' + products[index].ID + '" href="<?php echo base_url(); ?>index.php/admin/Productmanage/editProduct/' + products[index].ID + '">ID: ' + products[index].ID + '</a><p>' + products[index].DisplayName + '</p></div>',
+                    '<div class="d-block mt-2 ml-2 text-uppercase"><a class="product-id" data-id="' + products[index].ID + '" href="<?php echo base_url(); ?>index.php/admin/Productmanage/info/' + products[index].ID + '">ID: ' + products[index].ID + '</a><p>' + products[index].DisplayName + '</p></div>',
                     col,
                     Math.round((rate * 100) * 100) / 100 + '%',
                 ])

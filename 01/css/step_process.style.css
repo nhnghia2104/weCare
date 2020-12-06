@@ -48,7 +48,7 @@
 
 .progress-indicator>li.completed,
 .progress-indicator>li.completed .bubble {
-    color: #f77f00
+    color: #28a745
 }
 
 .progress-indicator>li .bubble {
@@ -75,8 +75,8 @@
 .progress-indicator>li.completed .bubble,
 .progress-indicator>li.completed .bubble:after,
 .progress-indicator>li.completed .bubble:before {
-    background-color: #f77f00;
-    border-color: #f77f00
+    background-color: #28a745;
+    border-color: #28a745
 }
 
 .progress-indicator>li .bubble:before {
@@ -136,12 +136,12 @@
 .progress-indicator>li.warning .bubble,
 .progress-indicator>li.warning .bubble:after,
 .progress-indicator>li.warning .bubble:before {
-    background-color: #edb10a;
+    background-color: #f77f00;
     border-color: #5a4304
 }
 
 .progress-indicator>li.warning .bubble {
-    color: #edb10a
+    color: #f77f00
 }
 
 .progress-indicator>li.info .bubble,

@@ -86,11 +86,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <!-- Nav Item - Order manage -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
                     <i class="fal fa-archive"></i>
-                    <span> Order</span>
+                    <span> Sale Order</span>
                 </a>
-                <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOrder" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/ordersmanage">All
                             Orders</a>
@@ -108,10 +108,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <div id="collapseCustomer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">All
-                            Customers</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/usermanage">
+                            Customer Infomation</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>index.php/admin/reviewmanage">
+                            Customer Reviews</a>
                     </div>
                 </div>
+
             </li>
 
 
@@ -354,22 +357,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <h6 class="custom-font-1-bold order_id"></h6>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 text-capitalize">
+                        <div class="col-md-6">
+                            <p class="date_created">
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-capitalize text-right">
                             <div class="dropdown no-arrow">
                                 <!-- button status -->
-                                <button class="custom-tag dropdown-toggle status_button" role="button" id="dropdownStatus" data-toggle="dropdown" data-id="" aria-haspopup="true" aria-expanded="false"></button>
+                                <button class="custom-tag dropdown-toggle status_button pl-5 pr-5" role="button" id="dropdownStatus" data-toggle="dropdown" data-id="" aria-haspopup="true" aria-expanded="false"></button>
                                 <div id="dataStatus" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item">Action</a>
-                                    <a class="dropdown-item">Another action</a>
-                                    <a class="dropdown-item">Something else here</a>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <p class="float-md-right date_created">
-                            </p>
-                        </div>
                     </div> <!-- end row -->
+
+                    <div class="row custom-font-4-bold mt-4">
+                        <div class="col-4">
+                            <p class="mb-0">Delivery Infomation</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="mb-0">Shipping Option</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="mb-0">Payment Method</p>
+                        </div>
+                    </div>
 
                     <div class="row mt-2">
                         <div class="col-lg-12">
@@ -385,20 +398,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                                 <div class="card rounded-0">
                                     <div class="card-body custom-font-4">
-                                        <h5 class="card-title custom-font-1-bold text-uppercase">
-                                            Shipping
-                                        </h5>
                                         <label class="ship_option text-capitalize">
-                                            
+
                                         </label>
                                     </div>
                                 </div>
 
                                 <div class="card rounded-0">
                                     <div class="card-body custom-font-4">
-                                        <h5 class="card-title custom-font-1-bold text-uppercase">
-                                            Payment
-                                        </h5>
                                         <p class="card-text payment_method"></p>
                                         <p class="card-text payment_total"></p>
                                         <div class="statusDisplay"></div>
@@ -411,15 +418,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                     <div class="row mt-1 mt-sm-4">
                         <div class="col-12 col-lg-4 mt-3">
-                            <div class="card bg-transparent rounded-0 border-0 shadow-sm">
+                            <div class="card bg-transparent rounded-0 border-0">
                                 <div class="card-body">
                                     <ul class="timeline custom-font-4">
-                                        <p class="custom-font-2-bold text-gray-900" style="padding-left: 60px;">Status</p>
+                                        <p class="custom-font-4-bold text-gray-600" style="padding-left: 60px;">Status</p>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-8 mt-3">
+                            <p class="mb-2 custom-font-weight-bold">Order Lines</p>
                             <div class="card rounded-0">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -572,7 +580,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function pushData(data) {
 
-            $('.order_id').html('Order detail #' + data.id);
+            $('.order_id').html('Detail #' + data.id + ' - ' + data.status.toUpperCase());
             $('.status_button').css('background', '#' + data.statusColor);
             $('.status_button').html(data.status);
             $('.date_created').html('Created:&nbsp;&nbsp;' + dateFormatHard(data.createAt));
@@ -590,6 +598,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             payDate = data.payDate;
             timeline = data.timeline;
             timeline = timeline == '' ? [] : JSON.parse(timeline);
+            tracking = data.tracking;
+            tracking = tracking == '' ? [] : JSON.parse(tracking);
             statusDidchange = false;
 
             // Display status
@@ -682,7 +692,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             displayTimeline();
 
             function displayTimeline() {
-                timeline.reverse();
                 output = "";
                 for (i = 0; i < timeline.length; i++) {
                     output += '<li>' +
@@ -691,7 +700,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         '</li>';
                 }
                 $('.timeline').append(output);
-                timeline.reverse();
             }
 
         }
@@ -713,12 +721,51 @@ defined('BASEPATH') or exit('No direct script access allowed');
             var id = data.id;
             if (statusDidchange) {
                 today = newDateForDB();
-                timeline.push({
+                
+
+                if (status <= 4) {
+                    inf = ['', 'Order Placed', 'CONFIRMED ORDER', 'IN TRANSIT', 'COMPLETED'];
+
+                    var curStatus = tracking[0].status_id;
+                    // Trường hợp chọn từ order -> transit
+                    if (status - curStatus > 1) {
+                        for (i = curStatus + 1; i < status; i++) {
+                            tracking.unshift({
+                                time: today,
+                                status_id: i,
+                                status: inf[i].toLowerCase(),
+                            })
+                        }
+                    }
+
+                    tracking.unshift({
+                        time: today,
+                        status_id: status,
+                        status: inf[status].toLowerCase(),
+                    })
+
+                }
+
+                var curTimeline = timeline[0].status_id;
+                if (status - curTimeline > 1) {
+                        for (i = curTimeline + 1; i < status; i++) {
+                            timeline.unshift({
+                                time: today,
+                                status_id: i,
+                                status: $('#dropdown-' + i).html().toLowerCase(),
+                            })
+                        }
+                    }
+
+                timeline.unshift({
                     time: today,
+                    status_id: status,
                     status: $('#dropdown-' + status).html().toLowerCase(),
-                })
-                payDate = status == 4 && (payDate == '' || payDate == '0000-00-00 00:00:00') && paid == 1 ? today : '';
+                });
+                
+                payDate = status == 4 && payDate == null ? today : payDate;
                 paid = status == 4 ? 1 : 0;
+                console.log(payDate);
             }
             $.ajax({
                 type: "POST",
@@ -730,6 +777,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     paid: paid,
                     payDate: payDate,
                     timeline: JSON.stringify(timeline),
+                    tracking: JSON.stringify(tracking),
                 },
                 success: function(data) {
                     if (data != null) {

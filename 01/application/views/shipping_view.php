@@ -46,11 +46,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="containerac mt-5">
 
                         <ul class="progress-indicator">
-                            <li class="completed">
+                            <li class="warning">
                                 <span class="bubble"></span>
                                 Sign in
                             </li>
-                            <li class="completed">
+                            <li class="warning">
                                 <span class="bubble"></span>
                                 Shipping & Payment
                             </li>
@@ -372,7 +372,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function setdefault() {
             defaultvl = addressProfile.default;
-            $('#card_' + defaultvl).append('<span class="tag-default">Default</span>');
+            $('#card_' + defaultvl).append('<span class="tag-default"><i class="fal fa-check-circle"></i> Default</span>');
             $('#card_' + defaultvl).addClass('border-success');
         }
 

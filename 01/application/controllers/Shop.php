@@ -20,13 +20,33 @@ class Shop extends CI_Controller {
 	 */
 	public function index()
 	{
-		$category = (isset($_GET['src'])) ? $_GET['src'] : '' ;
+		// $category = (isset($_GET['src'])) ? $_GET['src'] : '' ;
 
+		// $this->load->model('Product_model');
+
+		// $data = $category == '' ? $this->Product_model->getProductActive() : $this->Product_model->getProductActiveWithCategory($category);
+		// $data = array('product' => $data);
+		// $this->load->view('shop_view_2',$data, FALSE);
+
+		$this->load->view('shop_view_2');
+	}
+
+	public function sale()
+	{
+		$this->load->view('shop_sale_view');
+	}
+
+	public function getProductActive_ajax() {
 		$this->load->model('Product_model');
+		$data = $this->Product_model->getProductActive();
+		echo json_encode($data);
+	}
 
-		$data = $category == '' ? $this->Product_model->getProductActive() : $this->Product_model->getProductActiveWithCategory($category);
-		$data = array('product' => $data);
-		$this->load->view('shop_view',$data, FALSE);
+	public function getProductActiveWithCategory_ajax() {
+		$category = $_POST['src'];
+		$this->load->model('Product_model');
+		$data = $this->Product_model->getProductActiveWithCategory($category);
+		echo json_encode($data);
 	}
 
 	public function detail($id) {
@@ -42,16 +62,13 @@ class Shop extends CI_Controller {
 		$this->load->view('detail_view', $data, FALSE);
 	}
 
+	
+
 	function increaseView_Ajax() {
 		$id = $_POST['id'];
 
 		$this->load->model('Product_model');
 		$this->Product_model->increaseView($id);
-
-		date_default_timezone_set('Asia/Bangkok');
-		$time = date('Y-m-d H:i:s');
-		$this->load->model('Product_Traffic_model');
-		$this->Product_Traffic_model->insert($id,$time);
 	}
 
 	public function addToCartValue()
