@@ -1,0 +1,39 @@
+<div class="search-bar s128">
+    <div class="container pt-4">
+        <button onclick="hideSearch()" type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			<i class="fal fa-times"></i>
+		</button>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a class="navbar-brand" href="http://localhost:2104/01/index.php/home">
+                    <img src="http://localhost:2104/01/img/svg/logo-light.svg" alt="logo" height="150px" color="white" />
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form">
+                <form method="post" enctype="multipart/form-data" action="http://localhost:2104/01/index.php/search/find">
+                    <div class="inner-form">
+                        <div class="row">
+                            <div class="col-8 offset-2 text-center">
+                                <div class="input-field first" id="first">
+                                    <input name="key" class="input isFocus shadow-sm" id="inputFocus" type="text" placeholder="Search" />
+                                    <button type="button" class="clear" id="clear">
+                                        <i class="fal fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btnDelete = document.getElementById("clear");
+        btnDelete.addEventListener("click", function(e) {
+            e.preventDefault();
+            inputFocus.value = "";
+        });
+    </script>
+</div>
